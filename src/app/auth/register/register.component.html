@@ -1,1 +1,40 @@
-<p>register works!</p>
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="login-form" class="form" action="" method="post">
+                        <h3 class="text-center text-info">Registro</h3>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Correo:</label><br>
+                            <input type="text" name="email" id="email" class="form-control" [(ngModel)]="registerRequest.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Nombre de usuario:</label><br>
+                            <input type="text" name="nameuser" id="nameuser" class="form-control" [(ngModel)]="registerRequest.nameuser">
+                        </div>
+                        <div class="form-group">
+                            <label for="username" class="text-info">Nombre:</label><br>
+                            <input type="text" name="name" id="name" class="form-control" [(ngModel)]="registerRequest.name">
+                        </div>
+                        <div class="form-group">
+                            <label for="img" class="text-info">Imagen de perfil:</label><br>
+                            <input type="file" name="image" id="image" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="text-info">Contraseña:</label><br>
+                            <input type="text" name="password" id="password" class="form-control" [(ngModel)]="registerRequest.password">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-info" (click)="register()">Confirmar</button>
+                        </div>
+                        <div id="register-link" class="text-right">
+                            <p class="text-info">¿Ya tienes cuenta? <a routerLink="/login" class="text-info">Inicia sesión aquí</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

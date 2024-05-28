@@ -11,9 +11,9 @@ import { NavbarViewComponent } from './layout/navbar-view/navbar-view.component'
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 
 const routes: Routes = [
+  {path: '', redirectTo:'login', component:LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
-  {path: '', component: NavbarViewComponent,
+  {path: '/home', component: NavbarViewComponent, canMatch:[authGuard],
     children: [
       {path: 'user/:id', component: UserProfileViewComponent, canMatch:[authGuard]},
       {path: 'user/edit/:id', component: EditUserComponent, canMatch:[authGuard]},

@@ -4,6 +4,7 @@ import { RegisterRequest } from '../interfaces/RegisterRequest';
 import { LoginRequest } from '../interfaces/LoginRequest';
 import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
+import { TokenRequest } from '../interfaces/TokenRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -22,11 +23,11 @@ export class AuthUserService {
   }
 
   login(loginRequest:LoginRequest): Observable<any> {
-   return this.http.post(this.apiUrl + "/login", loginRequest)
+   return this.http.post<TokenRequest>(this.apiUrl + "/login", loginRequest)
     .pipe(
       tap(
         response =>{
-         // localStorage.setItem('token', response.)
+          localStorage.setItem('token', response.token)
          console.log(response)
         }),
         catchError(

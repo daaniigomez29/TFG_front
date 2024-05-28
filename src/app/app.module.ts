@@ -18,6 +18,7 @@ import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { NavbarViewComponent } from './layout/navbar-view/navbar-view.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -36,9 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
     NgbModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterLink
   ],
   providers: [UsersService, BooksService, AuthUserService],
   bootstrap: [AppComponent]

@@ -1,1 +1,27 @@
-<p>login works!</p>
+<div id="login">
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+                <div id="login-box" class="col-md-12">
+                    <form id="login-form" class="form">
+                        <h3 class="text-center text-info">Iniciar sesión</h3>
+                        <div class="form-group">
+                            <label for="email" class="text-info">Correo:</label><br>
+                            <input type="text" name="email" id="email" class="form-control" [(ngModel)]="loginRequest.email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="text-info">Contraseña:</label><br>
+                            <input type="password" name="password" id="password" class="form-control" [(ngModel)]="loginRequest.password">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-info" (click)="login()">Confirmar</button>
+                        </div>
+                        <div id="register-link" class="text-right">
+                            <p class="text-info">¿No tienes cuenta? <a routerLink="/register" class="text-info">Registrate aquí</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
