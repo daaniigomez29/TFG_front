@@ -5,16 +5,18 @@ import { LoginRequest } from '../interfaces/LoginRequest';
 import { BehaviorSubject, Observable, catchError, tap } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
 import { TokenRequest } from '../interfaces/TokenRequest';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthUserService {
 
-  private apiUrl:string = "http://localhost:8080/api/v1/auth"
+  private apiUrl:string = "http://localhost:9090/api/v1/auth"
   private isAuthenticated$: BehaviorSubject<boolean>;
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient, private router:Router) { 
     this.isAuthenticated$ = new BehaviorSubject<boolean>(this.isAuthenticated());
   }
 
@@ -60,11 +62,23 @@ export class AuthUserService {
 
   getUserData(){
     let token:string = localStorage.getItem('token') as any;
-    const {name, admin, username} = jwtDecode(token) as any
+    const {name, admin, username, image, idUser} = jwtDecode(token) as any
     return {
       nombre : name,
       admin : admin,
-      username : username
+      username : username,
+      image: image,
+      id: idUser
     }
+  }
+
+  logout(){
+    localStorage.removeItem('token'); //eliminame el token del LocalStorage
+    this.isAuthenticated$.next(false);                      
+    Swal.fire({ // muestra una alert exitosa aquí
+      title: "Sesión cerrada",
+      icon: "success"
+    })
+    this.router.navigateByUrl('login'); //Devuelveme al login
   }
 }

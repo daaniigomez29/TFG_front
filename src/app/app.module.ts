@@ -19,6 +19,8 @@ import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { NavbarViewComponent } from './layout/navbar-view/navbar-view.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
+import { BookCardComponent } from './books/book-card/book-card.component';
+import { ImagesService } from './services/images.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { RouterLink } from '@angular/router';
     EditUserComponent,
     EditBookComponent,
     ChatUserComponent,
-    NavbarViewComponent
+    NavbarViewComponent,
+    BookCardComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,7 @@ import { RouterLink } from '@angular/router';
     HttpClientModule,
     RouterLink
   ],
-  providers: [UsersService, BooksService, AuthUserService],
+  providers: [UsersService, BooksService, AuthUserService, ImagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
