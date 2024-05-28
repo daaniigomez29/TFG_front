@@ -1,1 +1,5 @@
-<p>all-books-view works!</p>
+<div class="container">
+@for (book of books; track $index) {
+    <app-book-card [bookName]="book.name" [bookAuthor]="book.nameAuthor"></app-book-card>
+}
+</div>
