@@ -1,0 +1,55 @@
+/* Estilo para el contenedor principal con fondo de imagen */
+.container-fluid {
+    min-height: 100vh; /* Establece la altura mínima del contenedor para ocupar toda la altura de la pantalla */
+    display: flex; /* Utiliza flex para alinear elementos hijos */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Estilos para el contenedor del formulario de registro */
+.RegisterCard {
+    background-color: white; 
+    border-radius: 20px; 
+    color: #919191; 
+    width: 30vw; 
+    padding: 20px; /* Ajusta el espacio interno */
+    display: flex; /* Utiliza un contenedor flexible para alinear los elementos */
+    flex-direction: column; /* Alinea los elementos en una columna */
+    align-items: center;
+}
+
+/* Estilos para los grupos de formulario dentro del formulario */
+.RegisterCard form .form-group {
+    margin-bottom: 20px; /* Aumenta el espacio entre grupos de formulario */
+}
+
+/* Estilos para los campos de entrada */
+input {
+    background-color: #F8F8F8; /* Fondo gris claro */
+    border-radius: 0; /* Sin bordes redondeados */
+    border: 1px solid #919191; /* Borde de 1px sólido de color gris */
+}
+
+/* Estilos para el botón de registro */
+.RegisterCard form button {
+    width: 100%; /* Ajusta el ancho del botón para que ocupe todo el ancho del contenedor */
+    padding: 10px; /* Ajusta el espacio interno */
+    color: black; 
+    margin-top: 20px; /* Espacio superior */
+    border-radius: 2px; 
+    border: none; /* Quita las líneas del borde */
+}
+
+/* Estilos para el título */
+h2 {
+    text-align: center; 
+    color: black; 
+}
+
+.text-danger {
+    max-width: 200px; /* Establece un ancho máximo para el span */
+    display: block; /* Cambia el display a block para que respete el ancho máximo */
+    white-space: normal; /* Permite que el texto se envuelva automáticamente en múltiples líneas */
+    word-wrap: break-word; /* Permite que las palabras largas se rompan y continúen en la siguiente línea */
+}

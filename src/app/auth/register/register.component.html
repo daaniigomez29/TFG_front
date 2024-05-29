@@ -1,39 +1,52 @@
-<div id="login">
-    <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-                <div id="login-box" class="col-md-12">
-                    <form id="login-form" class="form" action="" method="post">
-                        <h3 class="text-center text-info">Registro</h3>
-                        <div class="form-group">
-                            <label for="username" class="text-info">Correo:</label><br>
-                            <input type="text" name="email" id="email" class="form-control" [(ngModel)]="registerRequest.email">
-                        </div>
-                        <div class="form-group">
-                            <label for="username" class="text-info">Nombre de usuario:</label><br>
-                            <input type="text" name="nameuser" id="nameuser" class="form-control" [(ngModel)]="registerRequest.nameuser">
-                        </div>
-                        <div class="form-group">
-                            <label for="username" class="text-info">Nombre:</label><br>
-                            <input type="text" name="name" id="name" class="form-control" [(ngModel)]="registerRequest.name">
-                        </div>
-                        <div class="form-group">
-                            <label for="img" class="text-info">Imagen de perfil:</label><br>
-                            <input type="file" id="image" class="form-control" (change)="obtainImage($event)">
-                        </div>
+<div class="container-fluid">
+    <!-- Registro -->
+    <div class="card mt-3">
+        <div class="RegisterCard">
+            <h2 class="mt-2 mb-3">Registro</h2>
 
-                        <div class="form-group">
-                            <label for="password" class="text-info">Contraseña:</label><br>
-                            <input type="text" name="password" id="password" class="form-control" [(ngModel)]="registerRequest.password">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-info" (click)="register()">Confirmar</button>
-                        </div>
-                        <div id="register-link" class="text-right">
-                            <p class="text-info">¿Ya tienes cuenta? <a routerLink="/login" class="text-info">Inicia sesión aquí</a></p>
-                        </div>
-                    </form>
+            <form>
+                <!-- Campo Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" [(ngModel)]="registerRequest.email"
+                        id="email">
                 </div>
+
+                <!-- Campo Username -->
+                <div class="form-group">
+                    <label for="email">Nombre de usuario</label>
+                    <input type="email" class="form-control" name="nameuser" [(ngModel)]="registerRequest.nameuser"
+                        id="nameuser">
+                </div>
+
+                <!-- Campo Nombre -->
+                <div class="form-group">
+                    <label for="firstName">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="registerRequest.name"
+                        id="nombre">
+                </div>
+
+                <!-- Campo Imagen -->
+                <div class="form-group">
+                    <label for="firstName">Imagen de perfil</label>
+                    <input type="file" class="form-control" name="image" (change)="obtainImage($event)" id="image">
+                </div>
+
+                <!-- Campo Contraseña -->
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="registerRequest.password"
+                        id="password">
+                </div>
+
+                <!-- Botón de Registro -->
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info" id="botonRegistro"
+                        (click)="register()">Registrarse</button>
+                </div>
+            </form>
+            <div class="form-group">
+                <p>¿Ya tienes cuenta? Inicia sesión <a routerLink="/login">aquí</a></p>
             </div>
         </div>
     </div>

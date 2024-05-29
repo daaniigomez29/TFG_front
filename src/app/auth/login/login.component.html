@@ -1,27 +1,33 @@
-<div id="login">
-    <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-                <div id="login-box" class="col-md-12">
-                    <form id="login-form" class="form">
-                        <h3 class="text-center text-info">Iniciar sesión</h3>
-                        <div class="form-group">
-                            <label for="email" class="text-info">Correo:</label><br>
-                            <input type="text" name="email" id="email" class="form-control" [(ngModel)]="loginRequest.email">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="text-info">Contraseña:</label><br>
-                            <input type="password" name="password" id="password" class="form-control" [(ngModel)]="loginRequest.password">
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-info" (click)="login()">Confirmar</button>
-                        </div>
-                        <div id="register-link" class="text-right">
-                            <p class="text-info">¿No tienes cuenta? <a routerLink="/register" class="text-info">Registrate aquí</a></p>
-                        </div>
-                    </form>
+<div class="container-fluid vh-100 d-flex flex-column align-items-center">
+    <div class="col-sm-8 col-md-6 col-lg-3 mt-4">
+        <!-- Login -->
+        <div class="card mt-5">
+            <h2 class="card-title text-center mt-3">Inicio Sesión</h2>
+            <form method="post" class="card-body">
+  
+                <!-- Campo Email -->
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="text" class="form-control" name="correo" id="correo" [(ngModel)]="loginRequest.email" required pattern="[^@\s]+@gmail\.com">
+                </div><br>
+  
+                <!-- Campo Contraseñas -->
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" name="contraseña" id="contraseña" [(ngModel)]="loginRequest.password" required minlength="8">
+                </div><br>
+  
+                <!-- Botón de Login -->
+                <div class="form-group">
+                    <input type="submit" class="btn btn-lg btn-info form-control" value="Iniciar sesión" id="boton_login" (click)="login()">
                 </div>
-            </div>
+  
+                <!-- Enlace registro -->
+                <div class="text-center mt-3">
+                    <span>¿No tienes cuenta? </span>                                                                                                                                                               
+                    <a routerLink="/register" class="reglink">Regístrate</a>
+                </div>
+            </form>
         </div>
     </div>
-</div>
+  </div>
