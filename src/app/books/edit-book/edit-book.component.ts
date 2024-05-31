@@ -47,6 +47,7 @@ export class EditBookComponent implements OnInit{
         this.book.synopsis = data.synopsis;
         this.book.genre = data.genre;
         this.book.image = data.image;
+        console.log(data.image)
       },
       error: err =>{
         console.error(err)

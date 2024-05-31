@@ -7,6 +7,9 @@
                 } @else {
                     <img [src]="book.image" class="w-50 cursorImgBook" alt="">
                 }
+                @if (imageUrl == null && book.image == "") {
+                    <input id="file-input" type="file" (change)="obtainImage($event)" class="" />
+                }
             </label>
             <input id="file-input" type="file" (change)="obtainImage($event)" class="d-none" />
         </div>
