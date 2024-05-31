@@ -9,21 +9,21 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" [(ngModel)]="registerRequest.email"
-                        id="email">
+                        id="email" required pattern="[^@\s]+@gmail\.com">
                 </div>
 
                 <!-- Campo Username -->
                 <div class="form-group">
                     <label for="email">Nombre de usuario</label>
                     <input type="email" class="form-control" name="nameuser" [(ngModel)]="registerRequest.nameuser"
-                        id="nameuser">
+                        id="nameuser" required="">
                 </div>
 
                 <!-- Campo Nombre -->
                 <div class="form-group">
                     <label for="firstName">Nombre</label>
                     <input type="text" class="form-control" name="nombre" [(ngModel)]="registerRequest.name"
-                        id="nombre">
+                        id="nombre" >
                 </div>
 
                 <!-- Campo Imagen -->
@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label for="password">Contraseña</label>
                     <input type="password" class="form-control" name="password" [(ngModel)]="registerRequest.password"
-                        id="password">
+                        id="password" required="">
                 </div>
 
                 <!-- Botón de Registro -->

@@ -1,5 +1,14 @@
-<div class="container">
-@for (book of books; track $index) {
-    <app-book-card [bookName]="book.name" [bookAuthor]="book.nameAuthor"></app-book-card>
-}
+<div class="">
+    <div class="d-flex flex-row d-grid gap-3 px-5 pt-4">
+        @for (book of books | paginate : {
+            itemsPerPage: 5,
+            currentPage: p
+        }; track $index) {
+        <app-book-card [bookName]="book.name" [bookAuthor]="book.nameAuthor" [bookImage]="book.image" [bookId]="book.id"></app-book-card>
+        }
+    </div>
+    <div class="mx-auto me-5 mt-4 mb-2 justify-content-center d-flex">
+        <pagination-controls class="paginacion" [autoHide]="true" [responsive]="true" [maxSize]="5"
+            (pageChange)=" p = $event"></pagination-controls>
+    </div>
 </div>

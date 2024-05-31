@@ -21,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { BookCardComponent } from './books/book-card/book-card.component';
 import { ImagesService } from './services/images.service';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FavoriteBooksService } from './services/booksFavorites.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +45,10 @@ import { ImagesService } from './services/images.service';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxPaginationModule,
     RouterLink
   ],
-  providers: [UsersService, BooksService, AuthUserService, ImagesService],
+  providers: [UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

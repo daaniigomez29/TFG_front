@@ -11,6 +11,7 @@ import { AuthUserService } from '../../services/auth-user.service';
 export class AllBooksViewComponent implements OnInit{
 
   books:Book[] = []
+  p:number = 1
 
   constructor(private bookService:BooksService, private authService:AuthUserService){}
 

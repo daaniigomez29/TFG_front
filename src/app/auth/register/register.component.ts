@@ -25,6 +25,10 @@ export class RegisterComponent {
     admin: true
   }
 
+  validator(){
+    
+  }
+
   constructor(private authService:AuthUserService, private router:Router, private imagesService:ImagesService){}
 
   register(){

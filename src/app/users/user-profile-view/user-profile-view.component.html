@@ -1,1 +1,23 @@
-<p>user-profile-view works!</p>
+<div>
+    <div class="row d-flex flex-row bg-white m-5 rounded boxSize">
+        <div class="col-5 m-3 d-flex justify-content-center">
+            <img [src]="user.image" class="w-50" alt="">
+        </div>
+        <div class="col-6 m-3">
+            <div class="row d-flex flex-column">
+                <div class="col-md-5">
+                    <h1>{{user.nameuser}}</h1>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                    <p>{{user.name}}</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 d-flex flex-row d-grid gap-2">
+                        <b>Email:</b>
+                        <p>{{user.email}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

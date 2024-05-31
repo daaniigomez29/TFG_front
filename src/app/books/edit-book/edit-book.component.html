@@ -1,1 +1,46 @@
-<p>edit-book works!</p>
+<div>
+    <div class="row d-flex flex-row m-5 bg-white rounded">
+        <div class="col-5 m-3 d-flex justify-content-center">
+            <label for="file-input">
+                @if (imageUrl != null) {
+                    <img [src]="imageUrl" class="w-50 cursorImgBook" alt="">
+                } @else {
+                    <img [src]="book.image" class="w-50 cursorImgBook" alt="">
+                }
+            </label>
+            <input id="file-input" type="file" (change)="obtainImage($event)" class="d-none" />
+        </div>
+        <div class="col-6 m-3">
+            <div class="row d-flex flex-column">
+                <div class="col-md-5 d-flex d-grid gap-2">
+                    <b>Título:</b> <input type="text" class="input-group-text" [(ngModel)]="book.name">
+                </div>
+                <div class="col-md-5 col-sm-12 d-flex d-grid gap-2 mt-3">
+                    <b>Autor:</b> <input type="text" class="input-group-text" [(ngModel)]="book.nameAuthor">
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6 col-sm-12 d-flex flex-row d-grid gap-2">
+                        <b>Editorial:</b>
+                        <input type="text" class="input-group-text w-75" [(ngModel)]="book.editorial">
+                    </div>
+                    <div class="col-md-6 col-sm-12 d-flex flex-row d-grid gap-2">
+                        <b>Género:</b>
+                        <input type="text" class="input-group-text w-75" [(ngModel)]="book.genre">
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3 d-grid gap-2">
+                    <b>Sinopsis:</b>
+                    <textarea class="input-group-text" [(ngModel)]="book.synopsis"></textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mt-3">
+                        <button class="btn btn-info" (click)="editBook()">Confirmar cambios</button>
+                    </div>
+                    <div class="col-md-5 mt-3">
+                        <button class="btn btn-primary" (click)="back()">Volver</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

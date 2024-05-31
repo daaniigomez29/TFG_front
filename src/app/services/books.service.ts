@@ -15,4 +15,16 @@ apiUrl:string = "http://localhost:9090/api/v1/books"
   getAllBooks(){
     return this.http.get<Book[]>(this.apiUrl)
   }
+
+  getBook(id:number){
+    return this.http.get<Book>(`${this.apiUrl}/${id}`)
+  }
+
+  editBook(id:number, book:Book){
+    return this.http.put<Book>(`${this.apiUrl}/${id}`, book)
+  }
+
+  deleteBook(id:number){
+    return this.http.delete(`${this.apiUrl}/${id}`)
+  }
 }

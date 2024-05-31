@@ -57,7 +57,7 @@ export class AuthUserService {
   }
 
   isAdmin() : boolean{
-    return (this.getUserData().admin == 'admin') ? true : false
+    return (this.getUserData().admin == true) ? true : false
   }
 
   getUserData(){

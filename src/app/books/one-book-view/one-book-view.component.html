@@ -1,1 +1,47 @@
-<p>one-book-view works!</p>
+<div>
+    <div class="row d-flex flex-row bg-white m-5 rounded boxSize">
+        <div class="col-5 m-3 d-flex justify-content-center">
+            <img [src]="book.image" class="w-50" alt="">
+        </div>
+        <div class="col-6 m-3">
+            <div class="row d-flex flex-column">
+                <div class="col-md-5">
+                    <h1>{{book.name}}</h1>
+                </div>
+                <div class="col-md-5 col-sm-12">
+                    <p>{{book.nameAuthor}}</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 d-flex flex-row d-grid gap-2">
+                        <b>Editorial:</b>
+                        <p>{{book.editorial}}</p>
+                    </div>
+                    <div class="col-md-6 d-flex flex-row d-grid gap-2">
+                        <b>Género:</b>
+                        <p>{{book.genre}}</p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <p>{{book.synopsis}}</p>
+                </div>
+                <div class="row d-flex flex-row">
+                    <div class="col-md-4">
+                        @if (idFavorite == -1) {
+                            <button class="btn btn-info" (click)="addFavorites()">Añadir a favoritos</button>
+                        } @else {
+                            <button class="btn btn-danger" (click)="deleteFavorites()">Eliminar de favoritos</button>
+                        }
+                    </div>
+                    @if (authService.isAdmin()) {
+                    <div class="col-md-3">
+                        <button class="btn btn-warning" [routerLink]="['edit']">Editar libro</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button class="btn btn-danger">Eliminar libro</button>
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
