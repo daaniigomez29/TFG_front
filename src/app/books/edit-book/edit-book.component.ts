@@ -94,6 +94,14 @@ export class EditBookComponent implements OnInit{
     });
   }
 
+  validators(): boolean{
+    if(this.book.name == ""){
+      return false
+    } else {
+      return true
+    }
+  }
+
   back(){
     this.router.navigate(['home/books/', this.idBook])
   }

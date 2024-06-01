@@ -27,7 +27,7 @@ export class LoginComponent {
             icon: "success",
             showConfirmButton: false
           });
-          this.router.navigateByUrl("/home")
+          this.router.navigateByUrl("/home/books")
       },
       error: responseError =>{
         Swal.fire({

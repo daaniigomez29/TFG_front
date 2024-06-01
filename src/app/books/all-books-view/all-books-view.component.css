@@ -1,0 +1,19 @@
+.positionBook{
+position: relative;
+left: 5vw;
+}
+
+/* red background at the number*/
+.pagination-spreads::ng-deep li {
+    background-color: red;
+   }
+  
+  .pagination-spreads::ng-deep ul > li.disabled {
+    display: none !important;
+  }
+  
+  .pagination-spreads::ng-deep ul > li:not(.active) > a {
+    background-color: rgb(142, 142, 142) !important;
+    border-color: black !important;
+    color: #fff;
+  }

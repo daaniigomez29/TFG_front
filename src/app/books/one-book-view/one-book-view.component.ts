@@ -104,22 +104,35 @@ export class OneBookViewComponent implements OnInit{
   }
 
   deleteBook(){
-    this.bookService.deleteBook(this.idBook).subscribe({
-      next: data =>{
-        Swal.fire({
-          title: "Libro eliminado",
-          text: "El libro ha sido eliminado correctamente",
-          icon: "success",
-          showConfirmButton: false
-        });
-      },
-      error: err =>{
-        Swal.fire({
-          title: "Libro no eliminado",
-          text: "Ha habido un error: " + err.error.message,
-          icon: "error",
-          showConfirmButton: false
-        });
+    Swal.fire({
+      title: "¿Estás seguro?",
+      icon: 'warning',
+      text: "El libro será eliminado para siempre",
+      confirmButtonText:"Confirmar",
+      confirmButtonColor: "red",
+      cancelButtonColor: "grey",
+      cancelButtonText:"Cancelar",
+      showCancelButton: true
+    }).then((result) =>{
+      if(result.isConfirmed){
+        this.bookService.deleteBook(this.idBook).subscribe({
+          next: data =>{
+            Swal.fire({
+              title: "Libro eliminado",
+              text: "El libro ha sido eliminado correctamente",
+              icon: "success",
+              showConfirmButton: false
+            });
+            this.router.navigateByUrl("/home/books")
+          }, error: err =>{
+            Swal.fire({
+              title: "Libro no eliminado",
+              text: "Ha habido un error: " + err.error.message,
+              icon: "error",
+              showConfirmButton: false
+            });
+          }
+        })
       }
     })
   }

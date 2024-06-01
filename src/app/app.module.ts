@@ -23,6 +23,8 @@ import { BookCardComponent } from './books/book-card/book-card.component';
 import { ImagesService } from './services/images.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FavoriteBooksService } from './services/booksFavorites.service';
+import { AllUsersViewComponent } from './users/all-users-view/all-users-view.component';
+import { UserCardComponent } from './users/user-card/user-card.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { FavoriteBooksService } from './services/booksFavorites.service';
     EditBookComponent,
     ChatUserComponent,
     NavbarViewComponent,
-    BookCardComponent
+    BookCardComponent,
+    AllUsersViewComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

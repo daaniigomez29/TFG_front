@@ -5,3 +5,31 @@
 .cursorImgBook{
     cursor: pointer;
 }
+
+.imgZoom{
+    transition: transform .2s, filter .2s;
+}
+
+.imgZoom:hover{
+    cursor: pointer;
+    transform: scale(1.04);
+    filter: blur(2px);
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 26%;
+    transform: translate(-50%, -50%);
+    color: rgb(206, 19, 47);
+    -webkit-text-stroke: 1px black;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity .2s;
+    pointer-events: none;
+}
+
+.imgZoom:hover + .overlay {
+    opacity: 1;
+}

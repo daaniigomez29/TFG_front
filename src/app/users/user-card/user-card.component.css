@@ -1,0 +1,28 @@
+.userZoom{
+    transition: transform .2s;
+}
+
+.userZoom:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 567px) {
+    .card-text {
+      margin-bottom: 0.5em;
+    }
+  }
+  
+  .card {
+    
+    flex-direction: row;
+  }
+  .card-body {
+    padding: 0.5em 1em;
+  }
+  .card1.card img {
+    max-width: 7em;
+    height: 50%;
+    border-bottom-left-radius: calc(0.25rem - 1px);
+    border-top-left-radius: calc(0.25rem - 1px);
+  }

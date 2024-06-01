@@ -62,11 +62,11 @@ export class AuthUserService {
 
   getUserData(){
     let token:string = localStorage.getItem('token') as any;
-    const {name, admin, username, image, idUser} = jwtDecode(token) as any
+    const {name, admin, nameuser, image, idUser} = jwtDecode(token) as any
     return {
       nombre : name,
       admin : admin,
-      username : username,
+      nameuser : nameuser,
       image: image,
       id: idUser
     }

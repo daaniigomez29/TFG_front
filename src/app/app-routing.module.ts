@@ -10,6 +10,7 @@ import { authGuard } from './guardians/auth-guardian';
 import { NavbarViewComponent } from './layout/navbar-view/navbar-view.component';
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
+import { AllUsersViewComponent } from './users/all-users-view/all-users-view.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'login', pathMatch: 'full'},
@@ -17,8 +18,9 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'home', component: NavbarViewComponent, canMatch:[authGuard],
     children: [
-      {path: 'user/:id', component: UserProfileViewComponent, canMatch:[authGuard]},
-      {path: 'user/:id/edit', component: EditUserComponent, canMatch:[authGuard]},
+      {path: 'users/:id', component: UserProfileViewComponent, canMatch:[authGuard]},
+      {path: 'users/:id/edit', component: EditUserComponent, canMatch:[authGuard]},
+      {path: 'users', component: AllUsersViewComponent, canMatch:[authGuard]},
       {path: 'books', component: AllBooksViewComponent, canMatch:[authGuard]},
       {path: 'books/:id', component: OneBookViewComponent, canMatch:[authGuard]},
       {path: 'books/:id/edit', component: EditBookComponent, canMatch:[authGuard]}

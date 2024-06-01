@@ -12,6 +12,9 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
+  getAllUsers(){
+    return this.http.get<User[]>(this.apiUrl)
+  }
 
   getUser(idUser:number){
     return this.http.get<User>(`${this.apiUrl}/${idUser}`)

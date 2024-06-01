@@ -1,5 +1,9 @@
 
 .fondo{
-    background-color: #6486d6; /* Cambia esto al color de tu preferencia */
-    height: 100vh;
+    background-color: rgb(32, 71, 133);
+    min-height: 100vh;
+}
+
+.pointer{
+    cursor: pointer;
 }
