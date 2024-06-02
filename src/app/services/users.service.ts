@@ -23,4 +23,8 @@ export class UsersService {
   editUser(idUser:number, user:User){
     return this.http.put<User>(`${this.apiUrl}/${idUser}`, user)
   }
+
+  getFriends(idUser:number){
+    return this.http.get<User[]>(`${this.apiUrl}/${idUser}/friends`)
+  }
 }

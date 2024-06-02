@@ -1,7 +1,7 @@
 <div class="d-none d-lg-block">
     @if (users.length > 0) {
     @if (usersSearched.length == 0) {
-    <h2 class="p-5">No se encuentra ningún usuario con ese nombre</h2>
+    <h2 class="p-5 text-white">No se encuentra ningún usuario con ese nombre</h2>
     } @else {
     <div class="d-flex flex-wrap d-grid gap-3 p-4">
         @for (user of usersSearched | paginate : {
@@ -18,14 +18,14 @@
     </div>
     }
     } @else {
-    <h2 class="p-5">No se encuentra ningún usuario disponible en este momento.</h2>
+    <h2 class="p-5 text-white">No se encuentra ningún usuario disponible en este momento.</h2>
     }
 </div>
 
 <div class="d-block d-lg-none">
     @if (users.length > 0) {
         @if (usersSearched.length == 0) {
-            <h2 class="p-5">No se encuentra ningún usuario con ese nombre</h2>
+            <h2 class="p-5 text-white">No se encuentra ningún usuario con ese nombre</h2>
         } @else {   
     <div class="d-flex flex-wrap d-grid gap-3 p-4 positionuser">
         @for (user of usersSearched; track $index) {
@@ -35,6 +35,6 @@
     </div>
     }      
     } @else {
-    <h2 class="p-5">No se encuentra ningún usuario disponible en este momento.</h2>
+    <h2 class="p-5 text-white">No se encuentra ningún usuario disponible en este momento.</h2>
     }
 </div>

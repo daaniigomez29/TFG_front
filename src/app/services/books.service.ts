@@ -24,6 +24,10 @@ apiUrl:string = "http://localhost:9090/api/v1/books"
     return this.http.put<Book>(`${this.apiUrl}/${id}`, book)
   }
 
+  addBook(book:Book){
+    return this.http.post<Book>(this.apiUrl, book)
+  }
+
   deleteBook(id:number){
     return this.http.delete(`${this.apiUrl}/${id}`)
   }

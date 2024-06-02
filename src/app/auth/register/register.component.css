@@ -1,9 +1,5 @@
 /* Estilo para el contenedor principal con fondo de imagen */
 .container-fluid {
-    min-height: 100vh; /* Establece la altura mínima del contenedor para ocupar toda la altura de la pantalla */
-    display: flex; /* Utiliza flex para alinear elementos hijos */
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Centra el contenido verticalmente */
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -52,4 +48,8 @@ h2 {
     display: block; /* Cambia el display a block para que respete el ancho máximo */
     white-space: normal; /* Permite que el texto se envuelva automáticamente en múltiples líneas */
     word-wrap: break-word; /* Permite que las palabras largas se rompan y continúen en la siguiente línea */
+}
+
+.fondo{
+    background-color: rgb(32, 71, 133);
 }

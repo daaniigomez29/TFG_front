@@ -51,6 +51,9 @@ export class OneBookViewComponent implements OnInit{
     this.favoriteService.findByUserIdAndBookId(this.authService.getUserData().id, this.idBook).subscribe({
       next: data => {
         this.idFavorite = data
+      },
+      error: err =>{
+        console.error(err)
       }
     })
   }

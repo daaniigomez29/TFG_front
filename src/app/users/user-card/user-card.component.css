@@ -21,6 +21,7 @@
     padding: 0.5em 1em;
   }
   .card1.card img {
+    min-height: 10vh;
     max-width: 7em;
     height: 50%;
     border-bottom-left-radius: calc(0.25rem - 1px);

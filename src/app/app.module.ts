@@ -17,7 +17,7 @@ import { AuthUserService } from './services/auth-user.service';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { NavbarViewComponent } from './layout/navbar-view/navbar-view.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 import { BookCardComponent } from './books/book-card/book-card.component';
 import { ImagesService } from './services/images.service';
@@ -25,6 +25,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { FavoriteBooksService } from './services/booksFavorites.service';
 import { AllUsersViewComponent } from './users/all-users-view/all-users-view.component';
 import { UserCardComponent } from './users/user-card/user-card.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { AddBookComponent } from './books/add-book/add-book.component';
+import { SearchService } from './services/searchService.service';
+import { RequestsService } from './services/requests.service';
+import { FriendsService } from './services/friends.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +45,8 @@ import { UserCardComponent } from './users/user-card/user-card.component';
     NavbarViewComponent,
     BookCardComponent,
     AllUsersViewComponent,
-    UserCardComponent
+    UserCardComponent,
+    AddBookComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,10 @@ import { UserCardComponent } from './users/user-card/user-card.component';
     NgxPaginationModule,
     RouterLink
   ],
-  providers: [UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService],
+  providers: [
+    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService,
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

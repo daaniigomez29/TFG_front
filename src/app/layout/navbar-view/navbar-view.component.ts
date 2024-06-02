@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthUserService } from '../../services/auth-user.service';
 import { SearchService } from '../../services/searchService.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar-view',
@@ -15,7 +16,7 @@ export class NavbarViewComponent implements OnInit{
 
   optionSearchPlaceholder:string = "Buscar libro"
 
-  constructor(public authService:AuthUserService, private searchService:SearchService){}
+  constructor(public authService:AuthUserService, private searchService:SearchService, private router:Router){}
 
   ngOnInit(): void {
     this.imageProfile = this.authService.getUserData().image
@@ -44,5 +45,11 @@ export class NavbarViewComponent implements OnInit{
     
     this.selectOptionIcon = icon
     this.optionSearchPlaceholder = placeholder
+  }
+
+  goToUserView(){
+    this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>{
+      this.router.navigate(["/home/users/", this.authService.getUserData().id])
+    })
   }
 }

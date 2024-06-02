@@ -41,6 +41,8 @@ export class AllUsersViewComponent implements OnInit, OnDestroy{
   }
 
   ngOnDestroy(): void {
-    this.searchSubscription.unsubscribe();
+    if(this.searchSubscription){
+      this.searchSubscription.unsubscribe();      
+    }
   }
 }

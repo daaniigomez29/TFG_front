@@ -7,7 +7,7 @@
                 } @else {
                     <img [src]="book.image" class="w-50 cursorImgBook imgZoom" alt="">
                 }
-                <span class="overlay">Editar Imagen</span>
+                <span class="overlay">Añadir Imagen</span>
                 @if (imageUrl == null && book.image == "") {
                     <input id="file-input" type="file" (change)="obtainImage($event)" class="" />
                 }
@@ -16,8 +16,8 @@
         </div>
         <div class="col-6 m-3">
             <div class="row d-flex flex-column">
-                <div class="col-md-8 d-flex d-grid gap-2">
-                    <b>Título:</b> <input type="text" class="input-group-text w-100" [(ngModel)]="book.name">
+                <div class="col-md-5 d-flex d-grid gap-2">
+                    <b>Título:</b> <input type="text" class="input-group-text" [(ngModel)]="book.name">
                 </div>
                 <div class="col-md-5 col-sm-12 d-flex d-grid gap-2 mt-3">
                     <b>Autor:</b> <input type="text" class="input-group-text" [(ngModel)]="book.nameAuthor">
@@ -38,7 +38,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-5 mt-3">
-                        <button class="btn btn-info" (click)="editBook()">Confirmar cambios</button>
+                        <button class="btn btn-info" (click)="addBook()">Confirmar cambios</button>
                     </div>
                     <div class="col-md-5 mt-3">
                         <button class="btn btn-primary" (click)="back()">Volver</button>

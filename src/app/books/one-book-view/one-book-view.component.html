@@ -1,12 +1,12 @@
     <div class="d-none d-lg-block">
-        <div class="row d-flex flex-row bg-white m-5 rounded boxSize">
-            @if (book.name != "") {
-            <div class="col-5 m-3 d-flex justify-content-center  ">
+        <div class="row d-flex flex-row bg-white m-5 rounded">
+            @if (book.name != "" || book.image == "") {
+            <div class="col-5 m-3 d-flex justify-content-center">
                 <img [src]="book.image" class="w-50" alt="">
             </div>
-            <div class="col-6 m-3  ">
-                <div class="row d-flex flex-column h-75 justify-content-center">
-                    <div class="col-md-12  ">
+            <div class="col-6 m-3">
+                <div [ngClass]="book.image != '' ? 'row d-flex flex-column h-75 justify-content-center' : 'row d-flex flex-wrap h-75 justify-content-center' ">
+                    <div class="col-md-12">
                         <h2 class="display-5">{{book.name}}</h2>
                     </div>
                     <div class="col-md-5 col-sm-12">
@@ -22,25 +22,27 @@
                             <p>{{book.genre}}</p>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <p>{{book.synopsis}}</p>
-                    </div>
-                    <div class="row d-flex flex-row">
-                        <div class="col-md-4">
-                            @if (idFavorite == -1) {
-                            <button class="btn btn-info" (click)="addFavorites()">Añadir a favoritos</button>
-                            } @else {
-                            <button class="btn btn-danger" (click)="deleteFavorites()">Eliminar de favoritos</button>
+                    <div class="row">
+                        <div class="col-12">
+                            <p>{{book.synopsis}}</p>
+                        </div>
+                        <div class="row d-flex flex-row">
+                            <div class="col-md-4">
+                                @if (idFavorite == -1) {
+                                <button class="btn btn-info" (click)="addFavorites()">Añadir a favoritos</button>
+                                } @else {
+                                <button class="btn btn-danger" (click)="deleteFavorites()">Eliminar de favoritos</button>
+                                }
+                            </div>
+                            @if (authService.isAdmin()) {
+                            <div class="col-md-3">
+                                <button class="btn btn-warning" [routerLink]="['edit']">Editar libro</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-danger" (click)="deleteBook()">Eliminar libro</button>
+                            </div>
                             }
                         </div>
-                        @if (authService.isAdmin()) {
-                        <div class="col-md-3">
-                            <button class="btn btn-warning" [routerLink]="['edit']">Editar libro</button>
-                        </div>
-                        <div class="col-md-4">
-                            <button class="btn btn-danger" (click)="deleteBook()">Eliminar libro</button>
-                        </div>
-                        }
                     </div>
                 </div>
             </div>
@@ -54,7 +56,7 @@
 <div class="d-block d-lg-none">
     <div class="row bg-white mt-5 rounded ">
         @if (book.name != "") {
-        <div class="col-12 m-3 d-flex justify-content-center border border-dark">
+        <div class="col-12 m-3 d-flex justify-content-center  ">
             <img [src]="book.image" class="w-50" alt="">
         </div>
         

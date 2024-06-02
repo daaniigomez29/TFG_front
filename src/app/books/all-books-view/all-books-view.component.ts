@@ -4,6 +4,7 @@ import { BooksService } from '../../services/books.service';
 import { AuthUserService } from '../../services/auth-user.service';
 import { SearchService } from '../../services/searchService.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-books-view',
@@ -18,7 +19,7 @@ export class AllBooksViewComponent implements OnInit, OnDestroy{
 
   private searchSubscription!: Subscription;
 
-  constructor(private bookService:BooksService, private authService:AuthUserService, public searchService:SearchService){}
+  constructor(private bookService:BooksService, private authService:AuthUserService, public searchService:SearchService, private router:Router){}
 
   ngOnInit(): void {
     this.bookService.getAllBooks().subscribe({
@@ -38,7 +39,13 @@ export class AllBooksViewComponent implements OnInit, OnDestroy{
     });
   }
 
+  addBook(){
+    this.router.navigate(['home/books/add'])
+  }
+
   ngOnDestroy(): void {
-    this.searchSubscription.unsubscribe();
+    if(this.searchSubscription){
+      this.searchSubscription.unsubscribe();
+    }
   }
 }
