@@ -25,10 +25,10 @@ const routes: Routes = [
       {path: 'books/add', component: AddBookComponent, canMatch:[authGuard]},
       {path: 'books', component: AllBooksViewComponent, canMatch:[authGuard]},
       {path: 'books/:id', component: OneBookViewComponent, canMatch:[authGuard]},
-      {path: 'books/:id/edit', component: EditBookComponent, canMatch:[authGuard]}
+      {path: 'books/:id/edit', component: EditBookComponent, canMatch:[authGuard]},
+      {path: 'chat/:id', component: ChatUserComponent, canMatch:[authGuard]}
     ]
   },
-  {path: 'chat', component: ChatUserComponent, canMatch:[authGuard]}
 ];
 
 @NgModule({

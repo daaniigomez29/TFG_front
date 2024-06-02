@@ -6,7 +6,6 @@
         <div class="button maximize"></div>
       </div>
       <div class="title">
-        <img src="../../../assets/whatsapp-icon.png" width="25px" height="25px">
         WhatsApp
       </div>
     </div>
@@ -20,9 +19,9 @@
     </ul>
     <div class="bottom_wrapper clearfix">
       <div class="message_input_wrapper">
-        <input class="message_input" placeholder="Message..." />
+        <input class="message_input" placeholder="Message..." [(ngModel)]="messageInput"/>
       </div>
-      <div class="send_message">
+      <div class="send_message" (click)="sendMessage()">
         <div class="icon"></div>
         <div class="text">Send</div>
       </div>

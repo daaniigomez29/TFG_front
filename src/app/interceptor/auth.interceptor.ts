@@ -8,7 +8,11 @@ export class AuthInterceptor implements HttpInterceptor {
         const token = localStorage.getItem('token'); // O donde sea que almacenes tu token
 
          const urlsToExclude = [
-            'https://api.cloudinary.com'
+            'https://api.cloudinary.com',
+            'chat-socket',
+            'chat',
+            'app',
+            'topic'
         ];
 
         const shouldExclude = urlsToExclude.some(url => req.url.includes(url));

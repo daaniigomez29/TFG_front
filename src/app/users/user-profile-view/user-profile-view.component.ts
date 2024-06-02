@@ -65,7 +65,7 @@ export class UserProfileViewComponent implements OnInit{
   }
 
   getRequestsFromUser(){
-    this.requestsService.findRequests(this.authService.getUserData().nameuser).subscribe({
+    this.requestsService.findRequests(this.authService.getUserData().id).subscribe({
       next: data =>{
         this.requestsReceive = data
       }
@@ -202,5 +202,9 @@ export class UserProfileViewComponent implements OnInit{
         });
       }
     })
+  }
+
+  goToChat(){
+    this.router.navigate(["/home/chat/", this.authService.getUserData().id])
   }
 }

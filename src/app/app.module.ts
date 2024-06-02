@@ -30,6 +30,7 @@ import { AddBookComponent } from './books/add-book/add-book.component';
 import { SearchService } from './services/searchService.service';
 import { RequestsService } from './services/requests.service';
 import { FriendsService } from './services/friends.service';
+import { ChatService } from './services/chat.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { FriendsService } from './services/friends.service';
     RouterLink
   ],
   providers: [
-    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService,
+    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
