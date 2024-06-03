@@ -30,11 +30,6 @@ import { SearchService } from './services/searchService.service';
 import { RequestsService } from './services/requests.service';
 import { FriendsService } from './services/friends.service';
 import { ChatService } from './services/chat.service';
-import { ToastModule } from 'primeng/toast';
-import { ButtonModule } from 'primeng/button';
-import { MessageService } from 'primeng/api';
-import {AvatarModule} from 'primeng/avatar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -61,14 +56,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterLink,
-    ToastModule,
-    ButtonModule,
-    BrowserAnimationsModule,
-    AvatarModule
+    RouterLink
   ],
   providers: [
-    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService, MessageService,
+    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
