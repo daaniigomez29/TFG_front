@@ -51,7 +51,7 @@ export class RegisterComponent {
       catchError(error => {
         Swal.fire({
           title: "Incorrecto",
-          text: "Registro fallido",
+          text: "Registro fallido: " + error.error.message,
           icon: "error",
           showConfirmButton: false
         });
