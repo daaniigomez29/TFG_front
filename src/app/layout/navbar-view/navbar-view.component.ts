@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthUserService } from '../../services/auth-user.service';
 import { SearchService } from '../../services/searchService.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-navbar-view',
@@ -16,7 +17,7 @@ export class NavbarViewComponent implements OnInit{
 
   optionSearchPlaceholder:string = "Buscar libro"
 
-  constructor(public authService:AuthUserService, private searchService:SearchService, private router:Router){}
+  constructor(public authService:AuthUserService, private searchService:SearchService, private router:Router, private messageService:MessageService){}
 
   ngOnInit(): void {
     this.imageProfile = this.authService.getUserData().image
@@ -51,5 +52,18 @@ export class NavbarViewComponent implements OnInit{
     this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>{
       this.router.navigate(["/home/users/", this.authService.getUserData().id])
     })
+  }
+
+  showConfirm() {
+    this.messageService.add({
+      key: 'confirm',
+      severity: 'info',
+      summary: 'Message Summary',
+      detail: 'Message Content'
+    });
+  }
+
+  onConfirm() {
+    alert('Reply button clicked!');
   }
 }

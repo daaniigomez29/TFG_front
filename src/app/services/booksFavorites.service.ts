@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../interfaces/Book';
+import { FavoriteBook } from '../interfaces/FavoriteBook';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ apiUrl:string = "http://localhost:9090/api/v1/favorites"
 
 
   getAllFavoriteBooks(idUser:number){
-    return this.http.get<Book[]>(`${this.apiUrl}/${idUser}`)
+    return this.http.get<FavoriteBook[]>(`${this.apiUrl}/${idUser}`)
   }
 
   addFavoriteBook(idUser:number, idBook:number){

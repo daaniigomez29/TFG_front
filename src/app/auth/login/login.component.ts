@@ -32,7 +32,7 @@ export class LoginComponent {
       error: responseError =>{
         Swal.fire({
           title: "Incorrecto",
-          text: "Inicio de sesión fallido",
+          text: "Inicio de sesión fallido: credenciales incorrectos",
           icon: "error",
           showConfirmButton: false
         });

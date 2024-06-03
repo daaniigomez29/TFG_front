@@ -1,0 +1,52 @@
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.shadow-user {
+    /* box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5), 8px 8px 0 0 rgba(218, 165, 32, 0.5); */
+    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.5), 8px 8px 0 0 rgba(0, 128, 128, 0.5);
+}
+
+.shadow-boxes{
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.shadow-image{
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.profile-img {
+    width: 100%;
+    height: auto;
+}
+
+.list-group-horizontal {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.list-group-item {
+    flex: 0 0 auto;
+    margin: 0 10px;
+    border: none;
+}
+
+.favorite-books .list-group-item {
+    width: 150px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+button {
+    margin-right: 10px;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}

@@ -8,6 +8,9 @@ import { UsersService } from '../../services/users.service';
 import { RequestsService } from '../../services/requests.service';
 import { FriendsService } from '../../services/friends.service';
 import Swal from 'sweetalert2';
+import { FavoriteBooksService } from '../../services/booksFavorites.service';
+import { Book } from '../../interfaces/Book';
+import { FavoriteBook } from '../../interfaces/FavoriteBook';
 
 @Component({
   selector: 'app-user-profile-view',
@@ -26,6 +29,8 @@ export class UserProfileViewComponent implements OnInit{
 
   friends:User[] = []
 
+  favoriteBooks:FavoriteBook[] = []
+
   isFriend:boolean = false
 
   user:User = {
@@ -39,7 +44,7 @@ export class UserProfileViewComponent implements OnInit{
   }
 
   constructor(private bookService:BooksService, private router:Router, private route:ActivatedRoute, public authService:AuthUserService, private imagesService:ImagesService, private userService:UsersService,
-    private requestsService:RequestsService, private friendsService:FriendsService
+    private requestsService:RequestsService, private friendsService:FriendsService, private favoriteServices:FavoriteBooksService
   ){
   }
 
@@ -62,6 +67,7 @@ export class UserProfileViewComponent implements OnInit{
         this.getFriends()
       }
     })
+    this.getFavoriteBooksFromUser()
   }
 
   getRequestsFromUser(){
@@ -178,8 +184,6 @@ export class UserProfileViewComponent implements OnInit{
     })
   }
 
-  
-
   deleteFriend(){
     this.friendsService.deleteFriend(this.user.id, this.authService.getUserData().id).subscribe({
       next: data =>{
@@ -204,7 +208,16 @@ export class UserProfileViewComponent implements OnInit{
     })
   }
 
+  getFavoriteBooksFromUser(){
+      this.favoriteServices.getAllFavoriteBooks(this.idUser).subscribe({
+        next: data =>{
+          this.favoriteBooks = data
+        }
+      })
+  }
+
   goToChat(){
     this.router.navigate(["/home/chat/", this.authService.getUserData().id])
   }
+
 }

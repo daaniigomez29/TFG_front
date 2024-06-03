@@ -12,7 +12,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AllBooksViewComponent } from './books/all-books-view/all-books-view.component';
 import { OneBookViewComponent } from './books/one-book-view/one-book-view.component';
 import { UserProfileViewComponent } from './users/user-profile-view/user-profile-view.component';
-import { EditUserComponent } from './users/edit-user/edit-user.component';
 import { AuthUserService } from './services/auth-user.service';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
@@ -31,6 +30,12 @@ import { SearchService } from './services/searchService.service';
 import { RequestsService } from './services/requests.service';
 import { FriendsService } from './services/friends.service';
 import { ChatService } from './services/chat.service';
+import { ToastModule } from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { MessageService } from 'primeng/api';
+import {AvatarModule} from 'primeng/avatar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -40,7 +45,6 @@ import { ChatService } from './services/chat.service';
     AllBooksViewComponent,
     OneBookViewComponent,
     UserProfileViewComponent,
-    EditUserComponent,
     EditBookComponent,
     ChatUserComponent,
     NavbarViewComponent,
@@ -57,10 +61,14 @@ import { ChatService } from './services/chat.service';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterLink
+    RouterLink,
+    ToastModule,
+    ButtonModule,
+    BrowserAnimationsModule,
+    AvatarModule
   ],
   providers: [
-    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService,
+    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService, MessageService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

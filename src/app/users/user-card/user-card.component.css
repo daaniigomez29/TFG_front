@@ -27,3 +27,8 @@
     border-bottom-left-radius: calc(0.25rem - 1px);
     border-top-left-radius: calc(0.25rem - 1px);
   }
+
+  .shadow-user{
+   /* box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5), 8px 8px 0 0 rgba(218, 165, 32, 0.5); */
+    box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.5), 8px 8px 0 0 rgba(0, 128, 128, 0.5);
+}

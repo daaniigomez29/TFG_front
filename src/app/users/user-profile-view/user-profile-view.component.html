@@ -1,45 +1,68 @@
-<div>
-        <div class="row d-flex flex-row bg-white m-5 rounded boxSize">
-            @if (user.email != "") {
-            <div class="col-5 m-3 d-flex justify-content-center">
-                <img [src]="user.image" class="w-50" alt="">
-            </div>
-            <div class="col-6 m-3">
-                <div class="row d-flex flex-column">
-                    <div class="col-md-5">
-                        <h1>{{user.nameuser}}</h1>
-                    </div>
-                    <div class="col-md-5 col-sm-12">
-                        <p>{{user.name}}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 d-flex flex-row d-grid gap-2">
-                            <b>Email:</b>
-                            <p>{{user.email}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 d-flex flex-row d-grid gap-2">
-                            @if (authService.getUserData().nameuser != user.nameuser && idRequest == -1 && idReceiver == -1 && !isFriend) {
-                                <button class="btn btn-primary" (click)="sendRequest()">Enviar solicitud de amistad</button>
-                            } @if (idRequest != -1) {
-                                <button class="btn btn-success" (click)="acceptRequest()">Aceptar solicitud de amistad</button>
-                                <button class="btn btn-danger" (click)="declineRequest()">Rechazar solicitud de amistad</button>
-                            } 
-                            @if (idReceiver != -1) {
-                                <button class="btn disabled" (click)="acceptRequest()">Esperando respuesta</button>
-                            }
-                            @if (isFriend) {
-                                <button class="btn btn-danger" (click)="deleteFriend()">Eliminar amigo</button>
-                                <button class="btn btn-primary"(click)="goToChat()" >Chatear</button>
-
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        } @else {
+<div class="container mt-5">
+    <div class="row bg-white rounded shadow-user">
+        <div class="col-lg-5 d-flex justify-content-center align-items-center p-4">
+            @if (user.email != ""){
+            @if (user.image != ""){
+            <img [src]="user.image" class="profile-img shadow-image" alt="Profile Image">
+            } @else{
+            <img src="../../../assets/default_profile_img.png" class="profile-img" alt="Default Profile Image">
+            }
+            } @else{
             <h2 class="p-5">Los datos del usuario no se encuentran disponibles en este momento</h2>
-        }
+            }
         </div>
+        <div class="col-lg-7 p-4">
+            @if (user.email != ""){
+                <h1>{{user.nameuser}}</h1>
+            <div class="d-flex">
+                <b>Nombre:</b>
+            <p class="ms-2">{{user.name}}</p>
+            </div>
+            <div class="d-flex">
+                <b>Email:</b>
+                <p class="ms-2">{{user.email}}</p>
+            </div>
+            <div class="mt-3">
+                @if (authService.getUserData().nameuser != user.nameuser && idRequest == -1 && idReceiver == -1 &&
+                !isFriend){
+                <button class="btn btn-primary" (click)="sendRequest()">Enviar solicitud de amistad</button>
+                }
+                @if (idRequest != -1){
+                <button class="btn btn-success" (click)="acceptRequest()">Aceptar solicitud de amistad</button>
+                <button class="btn btn-danger" (click)="declineRequest()">Rechazar solicitud de amistad</button>
+                }
+                @if (idReceiver != -1){
+                <button class="btn btn-secondary" disabled>Esperando respuesta</button>
+                }
+                @if (isFriend){
+                <button class="btn btn-danger" (click)="deleteFriend()">Eliminar amigo</button>
+                <button class="btn btn-primary" (click)="goToChat()">Chatear</button>
+                }
+            </div>
+            <div class="mt-4">
+                <h3>Amigos</h3>
+                <ul class="list-group list-group-horizontal shadow-boxes overflow-auto">
+                    @for (friend of user.friends; track $index){
+                    <li class="list-group-item">
+                        <app-user-card [userNameuser]="friend.nameuser" [userName]="friend.name"
+                            [userImage]="friend.image" [userId]="friend.id"></app-user-card>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="mt-4">
+                <h3>Libros favoritos</h3>
+                <ul class="list-group list-group-horizontal shadow-boxes overflow-auto favorite-books">
+                    @for (favorite of favoriteBooks; track $index){
+                    <li class="list-group-item">
+                        <app-book-card [bookName]="favorite.bookModelDto.name"
+                            [bookAuthor]="favorite.bookModelDto.nameAuthor" [bookImage]="favorite.bookModelDto.image"
+                            [bookId]="favorite.bookModelDto.id"></app-book-card>
+                    </li>
+                    }
+                </ul>
+            </div>
+            }
+        </div>
+    </div>
 </div>

@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <div class="fondo">
-    <nav class="navbar bg-body-tertiary">
+    <nav class="navbar bg-body-tertiary d-none d-lg-block">
         <div class="container-fluid d-flex justify-content-between">
             <div>
                 <img src="../../../assets/favicon.png" height="40" alt="Logo" routerLink="/home/books" loading="lazy" class="pointer" />
@@ -32,8 +32,38 @@
     </nav>
     <!-- Navbar -->
 
-
+    <nav class="navbar bg-body-tertiary d-block d-lg-none">
+        <div class="container-fluid d-flex justify-content-between">
+            <div>
+                <img src="../../../assets/favicon.png" height="40" alt="Logo" routerLink="/home/books" loading="lazy" class="pointer" />
+            </div>
+            <div class="dropdown d-flex w-50">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa {{selectOptionIcon}}" id="iconSearch"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" routerLink="users" (click)="updateIconSearch('fa-user', 'Buscar usuario')"><i class="fa-regular fa-user"></i> Buscar usuario</a></li>
+                  <li><a class="dropdown-item" routerLink="books" (click)="updateIconSearch('fa-book', 'Buscar libro')"><i class="fa-solid fa-book"></i> Buscar libro</a></li>
+                </ul>
+                <input type="text" class="form-control" placeholder="{{optionSearchPlaceholder}}" (input)="search($event)">
+            </div>
+            <div class="dropdown">
+                <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle pointer"
+                    id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img [src]="imageProfile ? imageProfile : '../../../assets/default_profile_img.png'" width="42"
+                        height="42" class="rounded-circle me-2">
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow dropdown-menu-end"
+                    aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item pointer" (click)="goToUserView()">Ver
+                            perfil</a></li>
+                    <li><a class="dropdown-item pointer" (click)="logout()">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div>
         <router-outlet></router-outlet>
     </div>
+
 </div>

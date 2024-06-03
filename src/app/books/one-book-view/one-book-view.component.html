@@ -1,67 +1,43 @@
-    <div class="d-none d-lg-block">
-        <div class="row d-flex flex-row bg-white m-5 rounded">
-            @if (book.name != "" || book.image == "") {
-            <div class="col-5 m-3 d-flex justify-content-center">
-                <img [src]="book.image" class="w-50" alt="">
-            </div>
-            <div class="col-6 m-3">
-                <div [ngClass]="book.image != '' ? 'row d-flex flex-column h-75 justify-content-center' : 'row d-flex flex-wrap h-75 justify-content-center' ">
-                    <div class="col-md-12">
-                        <h2 class="display-5">{{book.name}}</h2>
-                    </div>
-                    <div class="col-md-5 col-sm-12">
-                        <p>{{book.nameAuthor}}</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 d-flex flex-row d-grid gap-2">
-                            <b>Editorial:</b>
-                            <p>{{book.editorial}}</p>
-                        </div>
-                        <div class="col-md-6 d-flex flex-row d-grid gap-2">
-                            <b>Género:</b>
-                            <p>{{book.genre}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <p>{{book.synopsis}}</p>
-                        </div>
-                        <div class="row d-flex flex-row">
-                            <div class="col-md-4">
-                                @if (idFavorite == -1) {
-                                <button class="btn btn-info" (click)="addFavorites()">Añadir a favoritos</button>
-                                } @else {
-                                <button class="btn btn-danger" (click)="deleteFavorites()">Eliminar de favoritos</button>
-                                }
-                            </div>
-                            @if (authService.isAdmin()) {
-                            <div class="col-md-3">
-                                <button class="btn btn-warning" [routerLink]="['edit']">Editar libro</button>
-                            </div>
-                            <div class="col-md-4">
-                                <button class="btn btn-danger" (click)="deleteBook()">Eliminar libro</button>
-                            </div>
-                            }
-                        </div>
-                    </div>
+<div class="container mt-5">
+    <div class="row bg-white rounded shadow-book p-4">
+        @if (book.name != "" || book.image == ""){
+        <div class="col-lg-5 col-md-12 d-flex justify-content-center align-items-center p-3">
+            <img [src]="book.image" class="img-fluid rounded">
+        </div>
+        <div class="col-lg-7 col-md-12 p-3">
+            <h2 class="display-5">{{book.name}}</h2>
+            <p class="text-muted">{{book.nameAuthor}}</p>
+            <div class="d-flex flex-wrap">
+                <div class="me-3">
+                    <b>Editorial:</b>
+                    <p>{{book.editorial}}</p>
+                </div>
+                <div>
+                    <b>Género:</b>
+                    <p>{{book.genre}}</p>
                 </div>
             </div>
-            } @else {
-            <h2 class="p-5">Los datos del libro no se encuentran disponibles en este momento</h2>
-            }
+            <p>{{book.synopsis}}</p>
+            <div class="d-flex flex-wrap">
+                <div class="me-3">
+                    @if (idFavorite == -1){
+                    <button class="btn btn-info" (click)="addFavorites()">Añadir a favoritos</button>
+                    } @else{
+                    <button class="btn btn-danger" (click)="deleteFavorites()">Eliminar de favoritos</button>
+                    }
+                </div>
+                @if (authService.isAdmin()){
+                <div class="me-3">
+                    <button class="btn btn-warning" [routerLink]="['edit']">Editar libro</button>
+                </div>
+                <div>
+                    <button class="btn btn-danger" (click)="deleteBook()">Eliminar libro</button>
+                </div>
+                }
+            </div>
         </div>
-    </div>
-
-
-<div class="d-block d-lg-none">
-    <div class="row bg-white mt-5 rounded ">
-        @if (book.name != "") {
-        <div class="col-12 m-3 d-flex justify-content-center  ">
-            <img [src]="book.image" class="w-50" alt="">
-        </div>
-        
-        } @else {
-        <h2 class="p-5">Los datos del libro no se encuentran disponibles en este momento</h2>
+        } @else{
+        <h2 class="text-center p-5">Los datos del libro no se encuentran disponibles en este momento</h2>
         }
     </div>
 </div>

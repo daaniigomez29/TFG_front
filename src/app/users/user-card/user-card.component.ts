@@ -16,6 +16,8 @@ export class UserCardComponent {
   constructor(private router:Router){}
 
   detailsuser(){
-    this.router.navigate(["/home/users/", this.userId])
+    this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>{
+      this.router.navigate(["/home/users/", this.userId]);
+    })
   }
 }
