@@ -19,7 +19,7 @@ export class AllBooksViewComponent implements OnInit, OnDestroy{
 
   private searchSubscription!: Subscription;
 
-  constructor(private bookService:BooksService, private authService:AuthUserService, public searchService:SearchService, private router:Router){}
+  constructor(private bookService:BooksService, public authService:AuthUserService, public searchService:SearchService, private router:Router){}
 
   ngOnInit(): void {
     this.bookService.getAllBooks().subscribe({

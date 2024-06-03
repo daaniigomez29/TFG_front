@@ -8,7 +8,6 @@
     background-color: white; 
     border-radius: 20px; 
     color: #919191; 
-    width: 30vw; 
     padding: 20px; /* Ajusta el espacio interno */
     display: flex; /* Utiliza un contenedor flexible para alinear los elementos */
     flex-direction: column; /* Alinea los elementos en una columna */
@@ -17,7 +16,7 @@
 
 /* Estilos para los grupos de formulario dentro del formulario */
 .RegisterCard form .form-group {
-    margin-bottom: 20px; /* Aumenta el espacio entre grupos de formulario */
+    margin-bottom: 10px; /* Aumenta el espacio entre grupos de formulario */
 }
 
 /* Estilos para los campos de entrada */
@@ -30,9 +29,7 @@ input {
 /* Estilos para el botón de registro */
 .RegisterCard form button {
     width: 100%; /* Ajusta el ancho del botón para que ocupe todo el ancho del contenedor */
-    padding: 10px; /* Ajusta el espacio interno */
     color: black; 
-    margin-top: 20px; /* Espacio superior */
     border-radius: 2px; 
     border: none; /* Quita las líneas del borde */
 }

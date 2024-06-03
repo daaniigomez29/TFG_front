@@ -1,7 +1,9 @@
 <div class="d-none d-lg-block">
-    <div class=" w-25 ">
-        <button class="btn btn-warning" (click)="addBook()">Añadir libro</button>
-    </div>
+    @if (authService.getUserData().admin) {
+        <div class=" w-25 ">
+            <button class="btn btn-warning" (click)="addBook()">Añadir libro</button>
+        </div>
+    }
     @if (books.length > 0) {
     @if (booksSearched.length == 0) {
     <h2 class="p-5 text-white">No se encuentra ningún libro con ese nombre</h2>
