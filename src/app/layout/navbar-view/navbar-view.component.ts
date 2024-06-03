@@ -53,17 +53,4 @@ export class NavbarViewComponent implements OnInit{
       this.router.navigate(["/home/users/", this.authService.getUserData().id])
     })
   }
-
-  showConfirm() {
-    this.messageService.add({
-      key: 'confirm',
-      severity: 'info',
-      summary: 'Message Summary',
-      detail: 'Message Content'
-    });
-  }
-
-  onConfirm() {
-    alert('Reply button clicked!');
-  }
 }

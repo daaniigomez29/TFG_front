@@ -5,7 +5,7 @@
             @if (user.image != ""){
             <img [src]="user.image" class="profile-img shadow-image" alt="Profile Image">
             } @else{
-            <img src="../../../assets/default_profile_img.png" class="profile-img" alt="Default Profile Image">
+            <img src="../../../assets/default_profile_img.png" class="profile-img">
             }
             } @else{
             <h2 class="p-5">Los datos del usuario no se encuentran disponibles en este momento</h2>
@@ -13,10 +13,10 @@
         </div>
         <div class="col-lg-7 p-4">
             @if (user.email != ""){
-                <h1>{{user.nameuser}}</h1>
+            <h1>{{user.nameuser}}</h1>
             <div class="d-flex">
                 <b>Nombre:</b>
-            <p class="ms-2">{{user.name}}</p>
+                <p class="ms-2">{{user.name}}</p>
             </div>
             <div class="d-flex">
                 <b>Email:</b>
