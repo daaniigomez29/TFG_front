@@ -12,7 +12,9 @@ export class AuthInterceptor implements HttpInterceptor {
             'chat-socket',
             'chat',
             'app',
-            'topic'
+            'topic',
+            'login',
+            'register'
         ];
 
         const shouldExclude = urlsToExclude.some(url => req.url.includes(url));
