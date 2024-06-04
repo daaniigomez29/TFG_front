@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EmailValidator, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersService } from './services/users.service';
 import { BooksService } from './services/books.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -30,6 +30,8 @@ import { SearchService } from './services/searchService.service';
 import { RequestsService } from './services/requests.service';
 import { FriendsService } from './services/friends.service';
 import { ChatService } from './services/chat.service';
+import { UsernameValidatorService } from './validators/username-validator.service';
+import { ValidatorService } from './validators/validator.service';
 
 
 @NgModule({
@@ -59,7 +61,7 @@ import { ChatService } from './services/chat.service';
     RouterLink
   ],
   providers: [
-    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService,
+    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService, EmailValidator, UsernameValidatorService, ValidatorService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

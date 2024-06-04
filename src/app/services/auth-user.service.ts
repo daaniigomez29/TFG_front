@@ -75,7 +75,7 @@ export class AuthUserService {
   logout(){
     localStorage.removeItem('token'); //eliminame el token del LocalStorage
     this.isAuthenticated$.next(false);                      
-    Swal.fire({ // muestra una alert exitosa aquí
+    Swal.fire({ // muestra una alert exitosa
       title: "Sesión cerrada",
       icon: "success"
     })

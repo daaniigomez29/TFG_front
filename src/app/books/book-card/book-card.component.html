@@ -1,5 +1,9 @@
 <div class="card bookZoom shadow-book" (click)="detailsBook()" style="width: 9rem;">
+  @if (bookImage != "") {
     <img [src]="bookImage" class="img-thumbnail rounded" alt="...">
+  } @else {
+    <img src="../../../assets/placeholder_book.jpg" class="img-thumbnail rounded" alt="...">
+  }
     <div class="card-body">
       <h5 class="card-title">{{bookName}}</h5>
       <p class="card-text">{{bookAuthor}}</p>

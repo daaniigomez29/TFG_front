@@ -1,8 +1,12 @@
-<div class="container mt-5">
+<div class="container mt-md-5">
     <div class="row bg-white rounded shadow-book p-4">
         @if (book.name != "" || book.image == ""){
         <div class="col-lg-5 col-md-12 d-flex justify-content-center align-items-center p-3">
-            <img [src]="book.image" class="img-fluid rounded">
+            @if (book.image != "") {
+                <img [src]="book.image" class="img-thumbnail rounded" alt="...">
+              } @else {
+                <img src="../../../assets/placeholder_book.jpg" class="img-thumbnail rounded" alt="...">
+              }
         </div>
         <div class="col-lg-7 col-md-12 p-3">
             <h2 class="display-5">{{book.name}}</h2>

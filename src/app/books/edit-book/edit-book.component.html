@@ -1,4 +1,5 @@
 <div>
+    <form [formGroup]="formBook">
     <div class="row d-flex flex-row m-5 bg-white shadow-book rounded">
         <div class="col-5 m-3 d-flex justify-content-center align-items-center">
             <label for="file-input" class="position-relative">
@@ -7,7 +8,7 @@
                 } @else {
                     <img [src]="book.image" class="w-50 cursorImgBook imgZoom" alt="">
                 }
-                <span class="overlay">Editar Imagen</span>
+                <span class="overlay">Editar imagen</span>
                 @if (imageUrl == null && book.image == "") {
                     <input id="file-input" type="file" (change)="obtainImage($event)" class="" />
                 }
@@ -16,26 +17,60 @@
         </div>
         <div class="col-6 m-3">
             <div class="row d-flex flex-column">
-                <div class="col-md-8 d-flex d-grid gap-2">
-                    <b>Título:</b> <input type="text" class="input-group-text w-100" [(ngModel)]="book.name">
+                <div class="col-md-5 d-flex d-grid gap-2">
+                    <b>Título:</b> <input type="text" class="input-group-text" formControlName="name" >
                 </div>
+                @if (noValid("name")) {
+                    <span class="text-danger">
+                        El título es necesario
+                    </span>
+                }
+
+
                 <div class="col-md-5 col-sm-12 d-flex d-grid gap-2 mt-3">
-                    <b>Autor:</b> <input type="text" class="input-group-text" [(ngModel)]="book.nameAuthor">
+                    <b>Autor:</b> <input type="text" class="input-group-text" formControlName="nameAuthor">
                 </div>
+
+                @if (noValid("nameAuthor")) {
+                    <span class="text-danger">
+                        El autor es necesario
+                    </span>
+                }
+
                 <div class="row mt-3">
                     <div class="col-md-6 col-sm-12 d-flex flex-row d-grid gap-2">
                         <b>Editorial:</b>
-                        <input type="text" class="input-group-text w-75" [(ngModel)]="book.editorial">
+                        <input type="text" class="input-group-text w-75" formControlName="editorial">
                     </div>
+
+                    @if (noValid("editorial")) {
+                        <span class="text-danger">
+                            La editorial es necesaria
+                        </span>
+                    }
+
                     <div class="col-md-6 col-sm-12 d-flex flex-row d-grid gap-2">
                         <b>Género:</b>
-                        <input type="text" class="input-group-text w-75" [(ngModel)]="book.genre">
+                        <input type="text" class="input-group-text w-75" formControlName="genre">
                     </div>
+                    
+                    @if (noValid("genre")) {
+                        <span class="text-danger">
+                            El género es necesario
+                        </span>
+                    }
+                    
                 </div>
                 <div class="col-md-12 mt-3 d-grid gap-2">
                     <b>Sinopsis:</b>
-                    <textarea class="input-group-text" [(ngModel)]="book.synopsis"></textarea>
+                    <textarea class="input-group-text" formControlName="synopsis"></textarea>
                 </div>
+
+                @if (noValid("synopsis")) {
+                    <span class="text-danger">
+                        La sinopsis es necesaria
+                    </span>
+                }
                 <div class="row">
                     <div class="col-md-5 mt-3">
                         <button class="btn btn-info" (click)="editBook()">Confirmar cambios</button>
@@ -47,4 +82,5 @@
             </div>
         </div>
     </div>
+</form>
 </div>

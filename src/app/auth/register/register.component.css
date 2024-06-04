@@ -41,7 +41,6 @@ h2 {
 }
 
 .text-danger {
-    max-width: 200px; /* Establece un ancho máximo para el span */
     display: block; /* Cambia el display a block para que respete el ancho máximo */
     white-space: normal; /* Permite que el texto se envuelva automáticamente en múltiples líneas */
     word-wrap: break-word; /* Permite que las palabras largas se rompan y continúen en la siguiente línea */
