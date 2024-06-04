@@ -8,7 +8,7 @@
       @for (message of messageList; track $index) {
           <li class="message" [ngClass]="message.user == authService.getUserData().id ? 'right' : 'left' ">
           <div class="avatar">
-            @if (authService.getUserData().image != "" && obtainDataUserSender(message.user) != "") {
+            @if (authService.getUserData().image != "" || obtainDataUserSender(message.user) != "") {
               <img [src]="authService.getUserData().id == message.user ? authService.getUserData().image : obtainDataUserSender(message.user) " class="img-thumbnail rounded" alt="...">
             } @else {
               <img src="../../../assets/default_profile_img.png" class="img-thumbnail rounded" alt="...">
