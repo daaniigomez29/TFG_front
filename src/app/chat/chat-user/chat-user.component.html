@@ -1,29 +1,32 @@
 <div class="chat_window">
     <div class="top_menu">
-      <div class="buttons">
-        <div class="button close"></div>
-        <div class="button minimize"></div>
-        <div class="button maximize"></div>
-      </div>
       <div class="title">
-        WhatsApp
+        BookMate Chat
       </div>
     </div>
     <ul class="messages">
-      <li class="message right">
-        <div class="avatar"></div>
-        <div class="text_wrapper">
-          <div class="text">Hola</div>
-        </div>
-      </li>
+      @for (message of messageList; track $index) {
+          <li class="message" [ngClass]="message.user == authService.getUserData().id ? 'right' : 'left' ">
+          <div class="avatar">
+            @if (authService.getUserData().image != "" && obtainDataUserSender(message.user) != "") {
+              <img [src]="authService.getUserData().id == message.user ? authService.getUserData().image : obtainDataUserSender(message.user) " class="img-thumbnail rounded" alt="...">
+            } @else {
+              <img src="../../../assets/default_profile_img.png" class="img-thumbnail rounded" alt="...">
+            }
+          </div>
+          <div class="text_wrapper">
+            {{message.message}}
+          </div>
+        </li>
+        }
     </ul>
     <div class="bottom_wrapper clearfix">
       <div class="message_input_wrapper">
-        <input class="message_input" placeholder="Message..." [(ngModel)]="messageInput"/>
+        <input class="message_input" placeholder="Mensaje..." [(ngModel)]="messageInput"/>
       </div>
       <div class="send_message" (click)="sendMessage()">
         <div class="icon"></div>
-        <div class="text">Send</div>
+        <div class="text">Enviar</div>
       </div>
     </div>
   </div>
