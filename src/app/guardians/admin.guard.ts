@@ -3,7 +3,7 @@ import { AuthUserService } from "../services/auth-user.service";
 import { inject } from "@angular/core";
 import { Observable } from "rxjs";
 
-export const authGuard: CanMatchFn = (route, segments) => {
+export const adminGuard: CanMatchFn = (route, segments) => {
     const authService = inject(AuthUserService)
     const router = inject(Router)
 

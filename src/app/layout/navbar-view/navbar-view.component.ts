@@ -42,7 +42,21 @@ export class NavbarViewComponent implements OnInit{
       iconElement.classList.add(icon);
     }
 
-    
+    this.selectOptionIcon = icon
+    this.optionSearchPlaceholder = placeholder
+  }
+
+  updateIconSearchMobile(icon:string, placeholder:string){
+    const iconElement = document.getElementById('iconSearchMobile');
+
+    if (iconElement) {  
+      // Eliminar la clase anterior del ícono
+      iconElement.classList.remove(this.selectOptionIcon);
+  
+      // Añadir la nueva clase del ícono
+      iconElement.classList.add(icon);
+    }
+
     this.selectOptionIcon = icon
     this.optionSearchPlaceholder = placeholder
   }

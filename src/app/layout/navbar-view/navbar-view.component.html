@@ -39,11 +39,11 @@
             </div>
             <div class="dropdown d-flex w-50">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="fa {{selectOptionIcon}}" id="iconSearch"></i>
+                    <i class="fa {{selectOptionIcon}}" id="iconSearchMobile"></i>
                 </button>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" routerLink="users" (click)="updateIconSearch('fa-user', 'Buscar usuario')"><i class="fa-regular fa-user"></i> Buscar usuario</a></li>
-                  <li><a class="dropdown-item" routerLink="books" (click)="updateIconSearch('fa-book', 'Buscar libro')"><i class="fa-solid fa-book"></i> Buscar libro</a></li>
+                  <li><a class="dropdown-item" routerLink="users" (click)="updateIconSearchMobile('fa-user', 'Buscar usuario')"><i class="fa-regular fa-user"></i> Buscar usuario</a></li>
+                  <li><a class="dropdown-item" routerLink="books" (click)="updateIconSearchMobile('fa-book', 'Buscar libro')"><i class="fa-solid fa-book"></i> Buscar libro</a></li>
                 </ul>
                 <input type="text" class="form-control" placeholder="{{optionSearchPlaceholder}}" (input)="search($event)">
             </div>

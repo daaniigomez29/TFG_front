@@ -5,7 +5,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { UserProfileViewComponent } from './users/user-profile-view/user-profile-view.component';
 import { AllBooksViewComponent } from './books/all-books-view/all-books-view.component';
 import { OneBookViewComponent } from './books/one-book-view/one-book-view.component';
-import { authGuard } from './guardians/auth-guardian';
+import { authGuard } from './guardians/auth.guard';
+import { adminGuard } from './guardians/admin.guard';
 import { NavbarViewComponent } from './layout/navbar-view/navbar-view.component';
 import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
@@ -20,10 +21,10 @@ const routes: Routes = [
     children: [
       {path: 'users/:id', component: UserProfileViewComponent, canMatch:[authGuard]},
       {path: 'users', component: AllUsersViewComponent, canMatch:[authGuard]},
-      {path: 'books/add', component: AddBookComponent, canMatch:[authGuard]},
+      {path: 'books/add', component: AddBookComponent, canMatch:[adminGuard]},
       {path: 'books', component: AllBooksViewComponent, canMatch:[authGuard]},
       {path: 'books/:id', component: OneBookViewComponent, canMatch:[authGuard]},
-      {path: 'books/:id/edit', component: EditBookComponent, canMatch:[authGuard]},
+      {path: 'books/:id/edit', component: EditBookComponent, canMatch:[adminGuard]},
       {path: 'chat/:id', component: ChatUserComponent, canMatch:[authGuard]}
     ]
   },
