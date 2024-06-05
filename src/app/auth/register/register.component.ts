@@ -9,6 +9,7 @@ import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/for
 import { UsernameValidatorService } from '../../validators/username-validator.service';
 import { EmailValidatorService } from '../../validators/email-validator.service';
 import { ValidatorService } from '../../validators/validator.service';
+import { UsernameRegisterValidatorService } from '../../validators/usernameRegister-validator.service';
 
 @Component({
   selector: 'app-register',
@@ -30,12 +31,12 @@ export class RegisterComponent {
   }
 
 
-  constructor(private authService: AuthUserService, private router: Router, private imagesService: ImagesService, private fb: FormBuilder, private emailValidator: EmailValidatorService, private validatorService:ValidatorService, private usernameValidator: UsernameValidatorService) { }
+  constructor(private authService: AuthUserService, private router: Router, private imagesService: ImagesService, private fb: FormBuilder, private emailValidator: EmailValidatorService, private validatorService:ValidatorService, private usernameRegisterValidator: UsernameRegisterValidatorService) { }
 
 
   formUser: FormGroup = this.fb.group({
     email: ["", [Validators.required, Validators.pattern(/^[A-Za-z0-9+_.-]+@(.+)$/), this.validatorService.patternEmail], [this.emailValidator]],
-    username: ["", [Validators.required], [this.usernameValidator]],
+    username: ["", [Validators.required], [this.usernameRegisterValidator]],
     name: ["", [Validators.required]],
     password: ["", [Validators.required, Validators.pattern(/^.{5,}$/)]]
   });

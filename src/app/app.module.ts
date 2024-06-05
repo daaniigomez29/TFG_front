@@ -33,6 +33,7 @@ import { ChatService } from './services/chat.service';
 import { UsernameValidatorService } from './validators/username-validator.service';
 import { ValidatorService } from './validators/validator.service';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
+import { UsernameRegisterValidatorService } from './validators/usernameRegister-validator.service';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { EditUserComponent } from './users/edit-user/edit-user.component';
     RouterLink
   ],
   providers: [
-    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService, EmailValidator, UsernameValidatorService, ValidatorService,
+    UsersService, BooksService, AuthUserService, ImagesService, FavoriteBooksService, SearchService, RequestsService, FriendsService, ChatService, EmailValidator, UsernameValidatorService, ValidatorService, UsernameRegisterValidatorService,
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
