@@ -8,12 +8,12 @@ import { ImageUploadData } from '../interfaces/ImageUploadData';
 })
 export class ImagesService {
 
-apiUrl:string = "https://api.cloudinary.com/v1_1/du4qwkruj/upload"
-unsignedUploadPreset:string = "bbdd_books";
+apiUrl:string = "https://api.cloudinary.com/v1_1/du4qwkruj/upload" //api para subir una imagen
+unsignedUploadPreset:string = "bbdd_books"; //Carpeta donde se suben las imágenes
 
   constructor(private http:HttpClient) { }
 
-
+  //Sube el archivo llamando a la api
   uploadImageCloudinary(file:File){
     const fd = new FormData();
     fd.append('upload_preset', this.unsignedUploadPreset);

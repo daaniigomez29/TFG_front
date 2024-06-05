@@ -33,6 +33,7 @@
                 }
                 @if (idReceiver != -1){
                 <button class="btn btn-secondary" disabled>Esperando respuesta</button>
+                <button class="btn btn-danger" (click)="deleteRequest()">Eliminar petición</button>
                 }
                 @if (isFriend){
                 <button class="btn btn-danger" (click)="deleteFriend()">Eliminar amigo</button>
@@ -65,6 +66,19 @@
                     }
                 </ul>
             </div>
+            @if (requestsReceive.length > 0 && authService.getUserData().id == idUser) {
+                <div class="mt-4">
+                    <h3>Peticiones de amistad recibidas</h3>
+                    <ul class="list-group list-group-horizontal shadow-boxes overflow-auto">
+                        @for (request of requestsReceive; track $index){
+                        <li class="list-group-item">
+                            <app-user-card [userNameuser]="request.userModelDtoRequest.nameuser" [userName]="request.userModelDtoRequest.name"
+                                [userImage]="request.userModelDtoRequest.image" [userId]="request.userModelDtoRequest.id"></app-user-card>
+                        </li>
+                        }
+                    </ul>
+                </div>
+            }
             }
         </div>
     </div>

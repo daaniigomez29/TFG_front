@@ -9,19 +9,23 @@ import { Observable, catchError, tap } from 'rxjs';
 })
 export class UsersService {
 
-  apiUrl:string = "http://localhost:9090/api/v1/users"
+  apiUrl:string = "http://localhost:9090/api/v1/users" //Api para llamar al back
+  
 
 
   constructor(private http:HttpClient) { }
 
+  //Obtiene todos los usuarios
   getAllUsers(){
     return this.http.get<User[]>(this.apiUrl)
   }
 
+  //Obtiene usuario por id
   getUser(idUser:number){
     return this.http.get<User>(`${this.apiUrl}/${idUser}`)
   }
 
+  //Edita usuario actualizando el token
   editUser(idUser:number, user:User): Observable<any>{
     return this.http.put<TokenRequest>(`${this.apiUrl}/${idUser}`, user).pipe(
       tap(response =>{
@@ -31,6 +35,7 @@ export class UsersService {
     )
   }
 
+  //Obtiene amigos del usuario
   getFriends(idUser:number){
     return this.http.get<User[]>(`${this.apiUrl}/${idUser}/friends`)
   }

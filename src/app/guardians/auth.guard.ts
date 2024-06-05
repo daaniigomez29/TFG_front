@@ -7,6 +7,6 @@ export const authGuard: CanMatchFn = (route, segments) => {
     const authService = inject(AuthUserService)
     const router = inject(Router)
 
-    return authService.isAuthenticated() ? true : router.navigateByUrl("/login")
+    return authService.isAuthenticated() ? true : router.navigateByUrl("/login") //Si el usuario ha iniciado sesión se le deja pasar, si no, tendrá que iniciar sesión
 }
 

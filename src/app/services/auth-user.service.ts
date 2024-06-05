@@ -13,24 +13,25 @@ import { Router } from '@angular/router';
 })
 export class AuthUserService {
 
-  private apiUrl:string = "http://localhost:9090/api/v1/auth"
-  private isAuthenticated$: BehaviorSubject<boolean>;
+  private apiUrl:string = "http://localhost:9090/api/v1/auth" //Url para llamar al back
+  private isAuthenticated$: BehaviorSubject<boolean>; //Observable para saber si ha iniciado sesión
 
   constructor(private http:HttpClient, private router:Router) { 
     this.isAuthenticated$ = new BehaviorSubject<boolean>(this.isAuthenticated());
   }
 
+  //Registra a un nuevo usuario en la base de datos 
   register(registerRequest:RegisterRequest): Observable<any> {
    return this.http.post(this.apiUrl + "/register", registerRequest)
   }
 
+  //El usuario inicio sesión en la aplicación
   login(loginRequest:LoginRequest): Observable<any> {
    return this.http.post<TokenRequest>(this.apiUrl + "/login", loginRequest)
     .pipe(
       tap(
         response =>{
-          localStorage.setItem('token', response.token)
-         console.log(response)
+          localStorage.setItem('token', response.token) //Añade al almacenamiento local el token
         }),
         catchError(
           error =>{
@@ -40,26 +41,32 @@ export class AuthUserService {
     )
   }
 
+  //Si existe token significa que ha iniciado sesión, por lo que devuelve true
   isLogged(): boolean{
     return localStorage.getItem('token') ? true : false
   }
 
+  //Obtiene token
   getToken(): string | null{
     return localStorage.getItem('token');
   }
 
+  //Devuelve si el usuario está autenticado
   isAuthenticated() : boolean{
     return !!this.getToken();
   }
 
+  //Devuelve el atributo isAuthenticated
   getIsAuthenticated() : Observable<boolean>{
   return this.isAuthenticated$.asObservable();
   }
 
+  //Devuelve si el usuario es admin o no
   isAdmin() : boolean{
     return (this.getUserData().admin == true) ? true : false
   }
 
+  //Obtiene datos del token
   getUserData(){
     let token:string = localStorage.getItem('token') as any;
     const {name, admin, nameuser, image, idUser} = jwtDecode(token) as any
@@ -72,6 +79,7 @@ export class AuthUserService {
     }
   }
 
+  //Cierra sesión
   logout(){
     localStorage.removeItem('token'); //eliminame el token del LocalStorage
     this.isAuthenticated$.next(false);                      

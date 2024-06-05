@@ -7,6 +7,6 @@ export const adminGuard: CanMatchFn = (route, segments) => {
     const authService = inject(AuthUserService)
     const router = inject(Router)
 
-    return authService.isAdmin() ? true : router.navigateByUrl("/login")
+    return authService.isAdmin() ? true : router.navigateByUrl("/login") //Si el usuario es administrador le deja pasar, si no lo es, tiene que iniciar sesión
 }
 

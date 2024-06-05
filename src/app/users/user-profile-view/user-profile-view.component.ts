@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 import { FavoriteBooksService } from '../../services/booksFavorites.service';
 import { Book } from '../../interfaces/Book';
 import { FavoriteBook } from '../../interfaces/FavoriteBook';
+import { RequestFriendship } from '../../interfaces/RequestFriendship';
 
 @Component({
   selector: 'app-user-profile-view',
@@ -25,7 +26,7 @@ export class UserProfileViewComponent implements OnInit{
 
   idReceiver:number = -1
 
-  requestsReceive:User[] = []
+  requestsReceive:RequestFriendship[] = []
 
   friends:User[] = []
 
@@ -128,6 +129,30 @@ export class UserProfileViewComponent implements OnInit{
       error: err =>{
         Swal.fire({
           title: "Solicitud de amistad no enviada",
+          text: "Ha habido un error: " + err.error.message,
+          icon: "error",
+          showConfirmButton: false
+        });
+      }
+    })
+  }
+
+  deleteRequest(){
+    this.requestsService.deleteRequest(this.authService.getUserData().id, this.idUser).subscribe({
+      next: data =>{
+        Swal.fire({
+          title: "Solicitud eliminada",
+          text: "Solicitud de amistad eliminada correctamente",
+          icon: "success",
+          showConfirmButton: false
+        });
+        this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>{
+          this.router.navigate(["/home/users/", this.idUser])
+        })
+      },
+      error: err =>{
+        Swal.fire({
+          title: "Solicitud de amistad no eliminada",
           text: "Ha habido un error: " + err.error.message,
           icon: "error",
           showConfirmButton: false

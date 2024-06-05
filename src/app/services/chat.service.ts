@@ -11,35 +11,35 @@ import { AuthUserService } from './auth-user.service';
 })
 export class ChatService {
 
-  stompClient:any
-  messageSubject:BehaviorSubject<ChatMessage[]> = new BehaviorSubject<ChatMessage[]>([]);
+  stompClient:any //Socket
+  messageSubject:BehaviorSubject<ChatMessage[]> = new BehaviorSubject<ChatMessage[]>([]); //Mensajes con el usuario
 
+  //Imagen de perfil de la otra persona con la que estamos chateando
   imageReceiver:string = ""
 
   constructor(private userService:UsersService, private authService:AuthUserService) {
-    this.initConnectionSocket()
+    this.initConnectionSocket() //Inicia la conexión al socket
    }
 
   initConnectionSocket(){
-    const socketUrl = "http://localhost:9090/chat-socket"
-    const socket = new SockJS(socketUrl);
-    this.stompClient = Stomp.over(socket);
+    const socketUrl = "http://localhost:9090/chat-socket" //Api declarada en la configuración del WebSocket en el back
+    const socket = new SockJS(socketUrl); //Instancia del Socket
+    this.stompClient = Stomp.over(socket); //añade el cliente al socket
   }
 
   joinRoom(roomId: string){
-    this.stompClient.connect({}, () =>{
+    this.stompClient.connect({}, () =>{ //Conecta el usuario a una room en la que podrán chatear
       this.stompClient.subscribe(`/topic/${roomId}`, (message: any) => {
-        const messageContent = JSON.parse(message.body);
-        const currentMessage = this.messageSubject.getValue();
+        const messageContent = JSON.parse(message.body); //mensaje en JSON
+        const currentMessage = this.messageSubject.getValue(); //Obtiene el valor del mensaje
 
-        console.log(currentMessage)
+        currentMessage.push(messageContent) //Añade el nuevo mensaje al array de mensajes
 
-        currentMessage.push(messageContent)
-
-        this.messageSubject.next(currentMessage);
+        this.messageSubject.next(currentMessage); //Actualiza los mensajes para que se queden guardados
 
         if(this.authService.getUserData().id != messageContent.user && this.imageReceiver == ""){
-          this.obtainDataUserSender(messageContent.user)
+          this.obtainDataUserSender(messageContent.user) //Obtiene imagen del otro usuario con el que hablamos
+          this.imageReceiver = ""
         }
       });
     })
@@ -49,10 +49,12 @@ export class ChatService {
     this.stompClient.send(`/app/chat/${roomId}`, {}, JSON.stringify(chatMessage))
   }
 
+  //Obtiene messageSubject como observable para que nos podamos suscribir
   getMessageSubject(){
     return this.messageSubject.asObservable();
   }
 
+  //Obtiene imagen del usuario con el que hablamos
   obtainDataUserSender(idUser:string): string{
     let id:number = Number.parseInt(idUser);
     this.userService.getUser(id).subscribe({
