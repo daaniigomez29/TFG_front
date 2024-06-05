@@ -6,7 +6,7 @@ import { UsersService } from '../../services/users.service';
 import { User } from '../../interfaces/User';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsernameValidatorService } from '../../validators/username-validator.service';
-import { of, switchMap, catchError } from 'rxjs';
+import { of, switchMap, catchError, tap } from 'rxjs';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -100,25 +100,28 @@ export class EditUserComponent implements OnInit{
       }
 
       upload$.pipe(
-        switchMap(() => this.userService.editUser(this.idUser, this.user)),
-        catchError(error => {
+        switchMap(() => this.userService.editUser(this.idUser, this.user))
+      ).subscribe({
+        next: response => {
+          if (response) {
+            Swal.fire({
+              title: "Correcto",
+              text: "Cuenta editada correctamente",
+              icon: "success",
+              showConfirmButton: false
+            });
+            this.router.navigateByUrl('/login', {skipLocationChange: true}).then(() =>{
+              this.router.navigate(["/home/users/", this.authService.getUserData().id])
+            })
+          }
+        },
+        error: err => {
           Swal.fire({
             title: "Incorrecto",
-            text: "Error al editar: " + error.error.message,
+            text: "Error al editar: " + err,
             icon: "error",
             showConfirmButton: false
           });
-          return of(null); // Manejo del error y finalizar la cadena
-        })
-      ).subscribe(response => {
-        if (response) {
-          Swal.fire({
-            title: "Correcto",
-            text: "Cuenta editada correctamente",
-            icon: "success",
-            showConfirmButton: false
-          });
-          this.router.navigate(['/home/users', this.idUser]);
         }
       });
     }
