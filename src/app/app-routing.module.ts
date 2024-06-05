@@ -12,6 +12,7 @@ import { ChatUserComponent } from './chat/chat-user/chat-user.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { AllUsersViewComponent } from './users/all-users-view/all-users-view.component';
 import { AddBookComponent } from './books/add-book/add-book.component';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 const routes: Routes = [
   {path: '', redirectTo:'login', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
     children: [
       {path: 'users/:id', component: UserProfileViewComponent, canMatch:[authGuard]},
       {path: 'users', component: AllUsersViewComponent, canMatch:[authGuard]},
+      {path: 'users/:id/edit', component: EditUserComponent, canMatch:[authGuard]},
       {path: 'books/add', component: AddBookComponent, canMatch:[adminGuard]},
       {path: 'books', component: AllBooksViewComponent, canMatch:[authGuard]},
       {path: 'books/:id', component: OneBookViewComponent, canMatch:[authGuard]},

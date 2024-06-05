@@ -16,42 +16,44 @@ export class ChatUserComponent implements OnInit{
   userId:string = ""
   messageList:any[] = [];
 
-  constructor(private chatService:ChatService, private route:ActivatedRoute, public authService:AuthUserService, private userService:UsersService){}
+
+  enterKeyListener: (event: KeyboardEvent) => void;
+
+
+  constructor(public chatService:ChatService, private route:ActivatedRoute, public authService:AuthUserService, private userService:UsersService){
+    this.enterKeyListener = this.onEnterPress.bind(this);
+  }
 
 
   ngOnInit(): void {
+    document.addEventListener('keydown', this.enterKeyListener);
     this.userId = this.route.snapshot.params['id']
     this.chatService.joinRoom("ABC")
     this.listenerMessage()
   }
 
   sendMessage(){
-    const chatMessage: ChatMessage = {
-      message: this.messageInput,
-      user: this.userId
+    if(this.messageInput != ""){
+      const chatMessage: ChatMessage = {
+        message: this.messageInput,
+        user: this.userId
+      }
+      this.chatService.sendMessage("ABC", chatMessage);
+      this.messageInput = ""
     }
-    this.chatService.sendMessage("ABC", chatMessage);
-    this.messageInput = ""
   }
 
   listenerMessage(){
     this.chatService.getMessageSubject().subscribe((messages: any) => {
       this.messageList = messages;
-      
     });
   }
 
-  obtainDataUserSender(idUser:string): string{
-    let id:number = Number.parseInt(idUser);
-    let imageString:string = "";
-    this.userService.getUser(id).subscribe({
-      next: data =>{
-        imageString = data.image
-      },
-      error: err =>{
-        return ""
+  onEnterPress(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      if(this.messageInput != ""){
+        this.sendMessage();
       }
-    })
-    return imageString;
+    }
   }
 }

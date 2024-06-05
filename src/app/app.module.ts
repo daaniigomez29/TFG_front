@@ -32,6 +32,7 @@ import { FriendsService } from './services/friends.service';
 import { ChatService } from './services/chat.service';
 import { UsernameValidatorService } from './validators/username-validator.service';
 import { ValidatorService } from './validators/validator.service';
+import { EditUserComponent } from './users/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ValidatorService } from './validators/validator.service';
     BookCardComponent,
     AllUsersViewComponent,
     UserCardComponent,
-    AddBookComponent
+    AddBookComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
