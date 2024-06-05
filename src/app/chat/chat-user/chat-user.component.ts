@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChatService } from '../../services/chat.service';
 import { ChatMessage } from '../../interfaces/ChatMessage';
 import { ActivatedRoute } from '@angular/router';
@@ -10,12 +10,13 @@ import { UsersService } from '../../services/users.service';
   templateUrl: './chat-user.component.html',
   styleUrl: './chat-user.component.css'
 })
-export class ChatUserComponent implements OnInit{
+export class ChatUserComponent implements OnInit, OnDestroy{
 
   messageInput:string = ""
-  userId:string = ""
+  userFriendId:string = ""
   messageList:any[] = [];
 
+  chatUser:string = ""
 
   enterKeyListener: (event: KeyboardEvent) => void;
 
@@ -24,11 +25,16 @@ export class ChatUserComponent implements OnInit{
     this.enterKeyListener = this.onEnterPress.bind(this);
   }
 
-
   ngOnInit(): void {
+    this.chatService.initConnectionSocket()
     document.addEventListener('keydown', this.enterKeyListener);
-    this.userId = this.route.snapshot.params['id']
-    this.chatService.joinRoom("ABC")
+    this.userFriendId = this.route.snapshot.params['id']
+    const roomId = this.generateRoomId(this.authService.getUserData().id, this.userFriendId);
+    if(!this.userService.chatsUser[roomId]){
+      this.userService.chatsUser[roomId] = roomId;
+    }
+    this.chatUser = this.userService.chatsUser[roomId]
+    this.chatService.joinRoom(this.userService.chatsUser[roomId]);
     this.listenerMessage()
   }
 
@@ -36,15 +42,15 @@ export class ChatUserComponent implements OnInit{
     if(this.messageInput != ""){
       const chatMessage: ChatMessage = {
         message: this.messageInput,
-        user: this.userId
+        user: this.authService.getUserData().id
       }
-      this.chatService.sendMessage("ABC", chatMessage);
+      this.chatService.sendMessage(this.chatUser, chatMessage);
       this.messageInput = ""
     }
   }
 
   listenerMessage(){
-    this.chatService.getMessageSubject().subscribe((messages: any) => {
+    this.chatService.getMessageSubject(this.chatUser).subscribe((messages: any) => {
       this.messageList = messages;
     });
   }
@@ -55,5 +61,13 @@ export class ChatUserComponent implements OnInit{
         this.sendMessage();
       }
     }
+  }
+
+   generateRoomId(userId1: string, userId2: string): string {
+    return [userId1, userId2].sort((a, b) => Number(a) - Number(b)).join('-');
+  }
+
+  ngOnDestroy(): void {
+    this.chatService.disconnect()
   }
 }

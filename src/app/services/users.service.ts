@@ -11,7 +11,7 @@ export class UsersService {
 
   apiUrl:string = "http://localhost:9090/api/v1/users" //Api para llamar al back
   
-
+  chatsUser: {[key: string]: string} = {};
 
   constructor(private http:HttpClient) { }
 

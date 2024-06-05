@@ -242,7 +242,7 @@ export class UserProfileViewComponent implements OnInit{
   }
 
   goToChat(){
-    this.router.navigate(["/home/chat/", this.authService.getUserData().id])
+    this.router.navigate(["/home/chat/", this.idUser])
   }
 
 }

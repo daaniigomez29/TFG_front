@@ -124,6 +124,12 @@ body {
   }
 }
 
+@media(min-width: 1300px){
+  .chat_window{
+    width: 50%;
+  }
+}
+
 @media (max-width: 480px) {
   .message_input {
     padding: 8px;
