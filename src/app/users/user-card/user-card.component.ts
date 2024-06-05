@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthUserService } from '../../services/auth-user.service';
 
 @Component({
   selector: 'app-user-card',
@@ -13,7 +14,7 @@ export class UserCardComponent {
   @Input() userName:string = ""
   @Input() userImage:string = ""
 
-  constructor(private router:Router){}
+  constructor(private router:Router, public authService:AuthUserService){}
 
   detailsuser(){
     this.router.navigateByUrl('/home', {skipLocationChange: true}).then(() =>{

@@ -52,3 +52,8 @@
    /* box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5), 8px 8px 0 0 rgba(218, 165, 32, 0.5); */
     box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.5), 8px 8px 0 0 rgba(0, 128, 128, 0.5);
 }
+
+.shadow-user2{
+  /* box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.5), 8px 8px 0 0 rgba(218, 165, 32, 0.5); */
+   box-shadow: 0 0 0 2px rgba(0, 128, 255, 0.684), 8px 8px 0 0 rgba(0, 55, 128, 0.5);
+}

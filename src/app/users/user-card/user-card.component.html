@@ -1,4 +1,4 @@
-  <div class="card1 card userZoom align-items-center shadow-user" (click)="detailsuser()">
+  <div class="card1 card userZoom align-items-center" [ngClass]="userId == authService.getUserData().id ? 'shadow-user2' : 'shadow-user' " (click)="detailsuser()">
     <div class="image-container">
     @if (userImage != "") {
       <img [src]="userImage" alt="...">
