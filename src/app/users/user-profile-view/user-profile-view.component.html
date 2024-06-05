@@ -38,6 +38,9 @@
                 <button class="btn btn-danger" (click)="deleteFriend()">Eliminar amigo</button>
                 <button class="btn btn-primary" (click)="goToChat()">Chatear</button>
                 }
+                @if (authService.getUserData().id == idUser) {
+                    <button class="btn btn-warning" [routerLink]="['/home/users', authService.getUserData().id, 'edit']">Editar perfil</button>
+                }
             </div>
             <div class="mt-4">
                 <h3>Amigos</h3>

@@ -1,0 +1,54 @@
+<div class="container mt-md-3">
+    <div class="row bg-white rounded shadow-user container_white">
+        <div class="col-lg-5 d-flex justify-content-center align-items-center p-4">
+            <label for="file-input" class="position-relative">
+                <img [src]="imageUrl ? imageUrl : user.image" class="w-50 cursorImgBook imgZoom" alt="">
+                <span class="overlay">Editar imagen</span>
+                @if (imageUrl == null && user.image == "") {
+                    <input id="file-input" type="file" (change)="obtainImage($event)" class="" />
+                    }
+                    <input id="file-input" type="file" (change)="obtainImage($event)" class="d-none" />
+                </label>
+        </div>
+        <div class="col-lg-7 p-4">
+            <form [formGroup]="formUser">
+                <div class="form-group row">
+                    <label for="username" class="col-sm-4 col-form-label"><b>Nombre de usuario:</b></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="username" formControlName="username">
+                    </div>
+
+                    @if(noValid("username")){
+                        <span class="text-danger">
+                            {{usernameError}}
+                        </span>
+                    }
+                </div>
+                <div class="form-group row">
+                    <label for="name" class="col-sm-4 col-form-label"><b>Nombre:</b></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name" formControlName="name">
+                    </div>
+
+                    @if(noValid("name")){
+                        <span class="text-danger">
+                            El nombre es necesario
+                        </span>
+                    }
+                </div>
+                <div class="form-group row">
+                    <label for="email" class="col-sm-4 col-form-label"><b>Email:</b></label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="email" formControlName="email" readonly>
+                    </div>
+                </div>
+                <div class="form-group row mt-3">
+                    <div class="col-sm-12 d-flex justify-content-between">
+                        <button class="btn btn-warning" (click)="editProfile()">Confirmar cambios</button>
+                        <button class="btn btn-primary" [routerLink]="['/home/users', authService.getUserData().id]">Volver</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
