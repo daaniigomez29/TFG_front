@@ -66,3 +66,14 @@ h2 {
        width: 25%; 
     }
 }
+
+@media (max-height: 720px) {
+
+    .positionImage{
+       display: none;
+    }
+
+    .positionRegister{
+        bottom: 0%;
+    }
+}

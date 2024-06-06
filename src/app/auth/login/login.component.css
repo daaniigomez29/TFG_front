@@ -18,3 +18,13 @@
        width: 25%; 
     }
 }
+
+@media (max-height: 900px) {
+    .positionImage{
+       top: 2%; 
+    }
+
+    .positionLogin{
+        bottom: 10%;
+    }
+}
