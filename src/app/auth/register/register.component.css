@@ -49,3 +49,20 @@ h2 {
 .fondo{
     background-color: rgb(32, 71, 133);
 }
+
+.positionImage{
+    position: relative;
+    bottom: 3%;
+}
+
+.positionRegister{
+    position: relative;
+    bottom: 5%;
+}
+
+
+@media (min-width: 1300px) {
+    img{
+       width: 25%; 
+    }
+}

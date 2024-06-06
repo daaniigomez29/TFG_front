@@ -1,3 +1,20 @@
-.fondo{
+.fondo {
     background-color: rgb(32, 71, 133);
+}
+
+.positionImage{
+    position: relative;
+    bottom: 10%;
+}
+
+.positionLogin{
+    position: relative;
+    bottom: 25%;
+}
+
+
+@media (min-width: 1300px) {
+    img{
+       width: 25%; 
+    }
 }
