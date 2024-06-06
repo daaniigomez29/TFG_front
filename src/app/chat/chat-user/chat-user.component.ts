@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ChatService } from '../../services/chat.service';
 import { ChatMessage } from '../../interfaces/ChatMessage';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthUserService } from '../../services/auth-user.service';
 import { UsersService } from '../../services/users.service';
+import { User } from '../../interfaces/User';
 
 @Component({
   selector: 'app-chat-user',
@@ -18,17 +19,20 @@ export class ChatUserComponent implements OnInit, OnDestroy{
 
   chatUser:string = ""
 
+  isFriend:boolean = false
+
   enterKeyListener: (event: KeyboardEvent) => void;
 
 
-  constructor(public chatService:ChatService, private route:ActivatedRoute, public authService:AuthUserService, private userService:UsersService){
+  constructor(public chatService:ChatService, private route:ActivatedRoute, public authService:AuthUserService, private userService:UsersService, private router:Router){
     this.enterKeyListener = this.onEnterPress.bind(this);
   }
 
   ngOnInit(): void {
+    this.userFriendId = this.route.snapshot.params['id']
+    this.getFriends()
     this.chatService.initConnectionSocket()
     document.addEventListener('keydown', this.enterKeyListener);
-    this.userFriendId = this.route.snapshot.params['id']
     const roomId = this.generateRoomId(this.authService.getUserData().id, this.userFriendId);
     if(!this.userService.chatsUser[roomId]){
       this.userService.chatsUser[roomId] = roomId;
@@ -70,4 +74,20 @@ export class ChatUserComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     this.chatService.disconnect()
   }
+
+    getFriends(){
+      let id = Number.parseInt(this.userFriendId)
+          this.userService.getFriends(this.authService.getUserData().id).subscribe({
+            next: data =>{
+              data.forEach(user =>{
+                if(user.id == id){
+                  this.isFriend = true
+                }
+              })
+              if(this.isFriend == false){
+                this.router.navigate(['home/users', this.userFriendId])
+              }
+            }
+          })
+    }
 }
