@@ -24,7 +24,7 @@ export class AllBooksViewComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.bookService.getAllBooks().subscribe({
       next: data =>{
-        this.books = data
+        this.books = data.sort((booka:Book, bookb:Book) => booka.name.localeCompare(bookb.name))
         this.booksSearched = data
         this.searchBook()
       }

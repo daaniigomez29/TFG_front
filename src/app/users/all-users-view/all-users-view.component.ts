@@ -24,8 +24,8 @@ export class AllUsersViewComponent implements OnInit, OnDestroy{
     this.usersService.getAllUsers().subscribe({
       next: data =>{
         this.users = data.filter(user =>
-          user.nameuser != this.authService.getUserData().nameuser
-        )
+          user.nameuser != this.authService.getUserData().nameuser   
+    ).sort((user1:User, user2:User) => user1.nameuser.localeCompare(user2.nameuser));
         this.usersSearched = this.users
         this.searchBook()
       }
