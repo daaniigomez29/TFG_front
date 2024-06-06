@@ -8,8 +8,8 @@ import { RequestFriendship } from '../interfaces/RequestFriendship';
 })
 export class RequestsService {
 
-  apiUrl:string = "http://localhost:9090/api/v1/requests" //Api para llamar al back
-  apiUrl2:string = "http://localhost:9090/api/v1/requestId" //Api 2 para llamar al back, solo se usa en findRequestByUserRequestAndUserReceive
+  apiUrl:string = "http://localhost:8080/api/v1/requests" //Api para llamar al back
+  apiUrl2:string = "http://localhost:8080/api/v1/requestId" //Api 2 para llamar al back, solo se usa en findRequestByUserRequestAndUserReceive
 
 
 

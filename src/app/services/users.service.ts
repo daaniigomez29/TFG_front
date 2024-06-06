@@ -9,7 +9,7 @@ import { Observable, catchError, tap } from 'rxjs';
 })
 export class UsersService {
 
-  apiUrl:string = "http://localhost:9090/api/v1/users" //Api para llamar al back
+  apiUrl:string = "http://localhost:8080/api/v1/users" //Api para llamar al back
   
   chatsUser: {[key: string]: string} = {};
 

@@ -22,7 +22,7 @@ export class ChatService {
    }
 
   initConnectionSocket(){
-    const socketUrl = "http://localhost:9090/chat-socket" //Api declarada en la configuración del WebSocket en el back
+    const socketUrl = "http://localhost:8080/chat-socket" //Api declarada en la configuración del WebSocket en el back
     const socket = new SockJS(socketUrl); //Instancia del Socket
     this.stompClient = Stomp.over(socket); //añade el cliente al socket
   }

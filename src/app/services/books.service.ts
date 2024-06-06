@@ -7,7 +7,7 @@ import { Book } from '../interfaces/Book';
 })
 export class BooksService {
 
-apiUrl:string = "http://localhost:9090/api/v1/books" //Url para llamar al back
+apiUrl:string = "http://localhost:8080/api/v1/books" //Url para llamar al back
 
   constructor(private http:HttpClient) { }
 

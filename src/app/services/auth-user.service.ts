@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AuthUserService {
 
-  private apiUrl:string = "http://localhost:9090/api/v1/auth" //Url para llamar al back
+  private apiUrl:string = "http://localhost:8080/api/v1/auth" //Url para llamar al back
   private isAuthenticated$: BehaviorSubject<boolean>; //Observable para saber si ha iniciado sesión
 
   constructor(private http:HttpClient, private router:Router) { 

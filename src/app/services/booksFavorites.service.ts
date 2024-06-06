@@ -8,7 +8,7 @@ import { FavoriteBook } from '../interfaces/FavoriteBook';
 })
 export class FavoriteBooksService {
 
-apiUrl:string = "http://localhost:9090/api/v1/favorites" //Url para llamar al back
+apiUrl:string = "http://localhost:8080/api/v1/favorites" //Url para llamar al back
 
   constructor(private http:HttpClient) { }
 

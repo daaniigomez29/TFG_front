@@ -7,7 +7,7 @@ import { User } from '../interfaces/User';
 })
 export class FriendsService {
 
-  apiUrl:string = "http://localhost:9090/api/v1/friends" //api para llamar alback
+  apiUrl:string = "http://localhost:8080/api/v1/friends" //api para llamar alback
 
 
 
