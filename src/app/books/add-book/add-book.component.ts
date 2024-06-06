@@ -53,52 +53,42 @@ export class AddBookComponent {
       this.book.editorial = this.formBook.value.editorial;
       this.book.synopsis = this.formBook.value.synopsis;
 
-
-      if (this.imageUrl == null) {
-        Swal.fire({
-          title: "Libro no añadido",
-          text: "Tienes que añadir una imagen",
-          icon: "error",
-          showConfirmButton: false
-        });
-      } else {
-        let upload$ = of(null)
-        if (this.imageFile != null) {
-          upload$ = this.imagesService.uploadImageCloudinary(this.imageFile).pipe(
-            switchMap(data => {
-              this.book.image = data.url;
-              return of(null); // Retorna un observable nulo para continuar la cadena
-            }),
-            catchError(error => {
-              console.error("Error al subir la imagen:", error);
-              return of(null); // Manejo del error y continuar la cadena
-            })
-          );
-        }
-
-        upload$.pipe(
-          switchMap(() => this.bookService.addBook(this.book)),
-          catchError(err => {
-            Swal.fire({
-              title: "Libro no añadido",
-              text: "Ha habido un error: " + err.error.message,
-              icon: "error",
-              showConfirmButton: false
-            });
-            return of(null); // Manejo del error y finalizar la cadena
+      let upload$ = of(null)
+      if (this.imageFile != null) {
+        upload$ = this.imagesService.uploadImageCloudinary(this.imageFile).pipe(
+          switchMap(data => {
+            this.book.image = data.url;
+            return of(null); // Retorna un observable nulo para continuar la cadena
+          }),
+          catchError(error => {
+            console.error("Error al subir la imagen:", error);
+            return of(null); // Manejo del error y continuar la cadena
           })
-        ).subscribe(response => {
-          if (response) {
-            Swal.fire({
-              title: "Libro añadido",
-              text: "El libro ha sido añadido correctamente",
-              icon: "success",
-              showConfirmButton: false
-            });
-            this.router.navigate(['home/books'])
-          }
-        });
+        );
       }
+
+      upload$.pipe(
+        switchMap(() => this.bookService.addBook(this.book)),
+        catchError(err => {
+          Swal.fire({
+            title: "Libro no añadido",
+            text: "Ha habido un error: " + err.error.message,
+            icon: "error",
+            showConfirmButton: false
+          });
+          return of(null); // Manejo del error y finalizar la cadena
+        })
+      ).subscribe(response => {
+        if (response) {
+          Swal.fire({
+            title: "Libro añadido",
+            text: "El libro ha sido añadido correctamente",
+            icon: "success",
+            showConfirmButton: false
+          });
+          this.router.navigate(['home/books'])
+        }
+      });
     }
   }
 
