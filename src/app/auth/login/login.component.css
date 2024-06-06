@@ -12,12 +12,29 @@
     bottom: 25%;
 }
 
+.change{
+    width: 25vw;
+}
+
 
 @media (min-width: 1300px) {
     img{
        width: 25%; 
     }
 }
+
+@media (max-width: 900px) {
+    .change{
+       width: 50vw; 
+    }
+}
+
+@media (max-width: 550px) {
+    .change{
+       width: 99vw; 
+    }
+}
+
 
 @media (max-height: 900px) {
     .positionImage{
