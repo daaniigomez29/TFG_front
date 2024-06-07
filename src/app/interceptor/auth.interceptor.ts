@@ -14,7 +14,10 @@ export class AuthInterceptor implements HttpInterceptor {
             'app',
             'topic',
             'login',
-            'register'
+            'register',
+            'existsEmail',
+            'existsNameuserRegister',
+            'existsNameuser'
         ];
 
         const shouldExclude = urlsToExclude.some(url => req.url.includes(url));
