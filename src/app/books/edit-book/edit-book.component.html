@@ -8,10 +8,10 @@
                 } @else {
                     <img [src]="book.image" class="w-50 cursorImgBook imgZoom" alt="">
                 }
-                <span class="overlay">Editar imagen</span>
                 @if (imageUrl == null && book.image == "") {
-                    <input id="file-input" type="file" (change)="obtainImage($event)" class="" />
+                    <img src="../../../assets/placeholder_book.jpg" class="w-50 cursorImgBook imgZoom" alt="">
                 }
+                <span class="overlay">Editar imagen</span>
             </label>
             <input id="file-input" type="file" (change)="obtainImage($event)" class="d-none" />
         </div>
